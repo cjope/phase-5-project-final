@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogTitle, Button } from "@material-ui/core";
 import React, { useState } from "react";
-import SignUpForm from "./SignUpForm";
+import SignupForm from "./SignupForm";
 import { toast, Flip } from "react-toastify";
 import { Form } from "react-bootstrap";
 
@@ -58,7 +58,7 @@ function Signup({ setUser }) {
         <DialogTitle>{"Sign Up"}</DialogTitle>
         <DialogContent>
           <Form onSubmit={handleSignUp}>
-            <SignUpForm 
+            <SignupForm 
             setUsername={setUsername}
             setEmail={setEmail}
             setPassword={setPassword}

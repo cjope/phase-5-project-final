@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import { Button, DialogTitle, Dialog, TextField, DialogContent } from "@mui/material"
 import { Form } from "react-bootstrap"
+import AccountCircle from "@mui/icons-material/AccountCircle"
+import { createTheme } from "@mui/material"
 
 function EditUser({user}){
   const [email, setEmail] = useState([])
@@ -21,11 +23,11 @@ function EditUser({user}){
 
   return(
     <>
-      <Button variant="outlined" color="primary" onClick={handleClickToOpen}>Edit User</Button>
-      <Dialog open={open} onClose={handleToClose} onSubmit={handleSubmit} >
-        <DialogTitle>{"Sign Up"}</DialogTitle>
-        <DialogContent>
-          <Form>
+      {/* <Button sx={{color:"white"}} onClick={handleClickToOpen} ><AccountCircle/></Button> */}
+      {/* <Dialog open={open} onClose={handleToClose} onSubmit={handleSubmit} > */}
+        {/* <DialogTitle>{"Edit User Details"}</DialogTitle> */}
+        {/* <DialogContent> */}
+          <Form style={{marginTop: "5%", padding: "5%", width:"600px", display:"flex", margin:"auto"}}>
             <TextField 
               required
               variant="outlined"
@@ -44,11 +46,11 @@ function EditUser({user}){
               defaultValue={user?.email}
               onChange={e=>setEmail(e.target.value)}
             ></TextField>
+      <Button type="submit" color="primary" >Submit</Button>
+      <Button onClick={handleToClose} color="secondary" >Close</Button>
           </Form>
-        </DialogContent>
-      <Button type="submit" color="primary" autoFocus>Submit</Button>
-      <Button onClick={handleToClose} color="secondary" autoFocus>Close</Button>
-      </Dialog>
+        {/* </DialogContent> */}
+      {/* </Dialog> */}
     </>
   )
 }

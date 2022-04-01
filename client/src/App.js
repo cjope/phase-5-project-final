@@ -9,17 +9,17 @@ import Home from "./Home"
 import Items from "./Items"
 import Login from "./Login"
 import Logout from "./Logout"
-import Menu from "./Menu"
-import NavBar from "./NavBar"
-import SignUp from "./SignUp"
-import SignUpForm from "./SignUpForm"
+import MenuBar from "./MenuBar"
+import Signup from "./Signup"
+import SignupForm from "./SignupForm"
 import User from "./User"
-
-
+import ItemDetail from "./ItemDetail"
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState([])
   const [items, setItems] = useState(null)
+  const [error, setError] = useState(null)
+  const [selectedItem, setSelectedItem] = useState([])
 
   useEffect(() => {
     fetch("/me")
@@ -36,21 +36,20 @@ function App() {
   return (
     <>
       <ToastContainer/>
-      <NavBar user={user} setUser={setUser}/>
+      <MenuBar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/login" element={<Login user={user} setUser={setUser} error={error} setError={setError}/>}/>
         <Route path="/edit-user" element={<EditUser user={user} setUser={setUser}/>}/>
-        <Route path="/items" element={<Items items={items}/>}/>
-        <Route path="/menu" element={<Menu/>}/>
-        <Route path="/user" element={<User user={user}/>}/>
-        <Route path="/user-form" element={<SignUpForm/>}/>
+        <Route path="/items" element={<Items items={items} setSelectedItem={setSelectedItem}/>}/>
+        <Route path="/item-detail" element={<ItemDetail item={selectedItem}/>}/>
+        <Route path="/user" element={<User user={user} />}/>
+        <Route path="/signup-form" element={<SignupForm/>}/>
         <Route path="/logout" element={<Logout setUser={setUser}/>}/>
-        <Route path="/create-item" element={<CreateItem/>}/>
       </Routes>
     </>
   );
 }
 
-export default App;
+export default App
