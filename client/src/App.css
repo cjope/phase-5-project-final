@@ -1,5 +1,106 @@
 .App {
+  display: block;
   text-align: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: rgb(104, 250, 160);
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  text-align: center;
+  /* border: solid 2px rgb(25, 118, 210) !important; */
+}
+
+/* 
+.nav {
+  background-color: rgb(248, 133, 133);
+}
+
+.menu {
+  background-color: #75dcf8;
+}
+
+.create-item {
+  background-color: rgb(248, 133, 204);
+} */
+
+Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* background-color: rgb(133, 248, 181); */
+}
+
+/* emoji picker */
+/* .css-1elwnq4-MuiPaper-root-MuiAccordion-root:last-of-type:focus-within { */
+/* background-color: rgb(211, 136, 255); */
+/* border: solid 2px rgb(25, 118, 210); */
+/* } */
+
+/* nav.emoji-categories {
+  display: none !important;
+} */
+
+/* category name */
+.emoji-picker-react .emoji-group:before {
+  margin-bottom: 2% !important;
+}
+
+.emoji :hover {
+  transform: scale(1.2) !important;
+  z-index: 2 !important;
+  position: relative !important;
+  background-color: unset !important;
+}
+
+/* emoji container full size */
+aside.emoji-picker-react {
+  width: auto !important;
+  flex-wrap: wrap;
+}
+
+/* active category underline */
+.active-category-indicator {
+  opacity: 0 !important;
+}
+
+.emoji-picker-react img.emoji-img {
+  height: 50px !important;
+  width: 50px !important;
+}
+
+.emoji-categories button {
+  height: 50px !important;
+  width: 50px !important;
+  background-size: unset !important;
+  z-index: 3 !important;
+  margin: 15px !important;
+}
+
+.emoji-picker-react .emoji-categories button.active {
+  transform: scale(1.25);
+  padding: 0 !important;
+  border-radius: 50px;
+  box-shadow: 0em 0em 1em rgb(4, 255, 58);
+}
+
+.emoji-categories :hover {
+  transform: scale(1.2);
+  opacity: 1 !important;
+}
+
+/* removes scrollbar */
+aside.emoji-picker-react ::-webkit-scrollbar {
+  display: none !important;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
 }
 
 .App-logo {
@@ -32,7 +133,69 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+
+.profile-pic {
+  /* width: 50px;
+  height: 50px; */
+  border-radius: 50%;
+  /* margin-inline: 2%; */
+  /* border: 1px solid black; */
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.nav {
+  display: flex;
+  /* flex-direction: row; */
+  /* justify-content: space-around; */
+  align-items: center;
+  /* margin-top: 1%; */
+  /* flex-wrap: nowrap; */
+  /* width: 100%; */
+  padding-inline: 2%;
+}
+
+
+.user {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+  align-items: center;
+}
+
+.nav p {
+  width: 200px;
+  /* text-align: end; */
+  margin-right: 5%;
+}
+
+
+
+
+/* .nav h1 {
+  width: 45%;
+} */
+
+.nav img {
+  width: 50px;
+  height: auto;
+  padding-left: 50px;
+}
+
+
+/* 
+div.MuiFormControl-root.MuiTextField-root {
+  border: solid red;
+} */
+/* 
+.date :hover :only-child {
+  border: 1px solid rgba(0, 0, 0, 0.87);
+  border-radius: 4px;
+} */

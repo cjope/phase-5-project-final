@@ -49,13 +49,25 @@ function ItemDetail({item}) {
     console.log(newExtDate)
   
     return (
-    <div style={{textAlign: "center", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
-        <br/>
-    
+    <div style={{textAlign: "center", display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center"}}>
+        <div style={{display:"flex", justifyContent:"space-around", flexDirection:"row", marginTop:"5%", marginRight: 25}} >
+        <Stack spacing={6}>
+            <Paper elevation={10} sx={{p:2, width:340, paddingBottom:6, paddingTop:6  }} style={{fontSize:25}} >{item.name}</Paper>
+            <Paper>
+                <Paper elevation={10} sx={{p:2, width:300, m:2}} style={{fontSize:25}}>Item is {item.perishable? "Perishable":"Shelf Stable"}</Paper>    
+                <Paper elevation={10} sx={{p:2, width:300, m:2}} style={{fontSize:25}}>Storage Type: {item.storage_type}</Paper>
+            </Paper>
+            <Paper>
+        <h2>Expiration Date</h2>
+        <Paper elevation={10} sx={{p:2, width:300, m:2}} style={{fontSize:25}}>{date.toDateString()}</Paper>
+        </Paper>
+        </Stack>
+        </div>
+
+        <div style={{display:"flex", justifyContent:"space-around", flexDirection:"row", marginTop:"5%", marginLeft:20}} >
         <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Stack spacing={6}>
         
-            <Paper elevation={10} sx={{p:2, width:300}} style={{fontSize:25}} >{item.name}</Paper>
             <Grid item xs={12} md={6} backgroundColor={"white"} borderRadius={5}>
                 
                 <CalendarPicker 
@@ -67,26 +79,20 @@ function ItemDetail({item}) {
                 />
                 {/* <button onClick={e=>setDisabled(!disabled)}>{disabled?"Enable":"Disable"}</button> */}
             </Grid>
+
+      
+        <Paper>
+        <h3>Can be Extended {item.timeframe} to:</h3>
+        <Paper elevation={10} sx={{p:2, width:300, m:2}} style={{fontSize:25}}>{newExtDate}</Paper>
+        </Paper>
         
         </Stack>
         
         
         </LocalizationProvider>
-        <br/>
-        <Paper>
-        <h2>Expiration Date</h2>
-        <Paper elevation={10} sx={{p:2, width:300, m:2}} style={{fontSize:25}}>{date.toDateString()}</Paper>
-        </Paper>
-        <br/>
-        <Paper>
-        <h3>Can be Extended {item.timeframe} to:</h3>
-        <Paper elevation={10} sx={{p:2, width:300, m:2}} style={{fontSize:25}}>{newExtDate}</Paper>
-        </Paper>
-        <br/>
-        <Paper>
-        <Paper elevation={10} sx={{p:2, width:300, m:2}} style={{fontSize:25}}>Item is {item.perishable? "Perishable":"Shelf Stable"}</Paper>    
-        <Paper elevation={10} sx={{p:2, width:300, m:2}} style={{fontSize:25}}>Storage Type: {item.storage_type}</Paper>
-        </Paper>
+        </div>
+
+   
     </div>
     );
 }
