@@ -115,12 +115,11 @@ function CreateItem(){
       <Button type="submit">Confirm</Button>
     </Form>
 
-
     {/* make this a function */}
     <h1> Results: </h1>
       {timeframe ?
         <div>
-          <h1>Set {name.toLowerCase()} to be consumed within <em>{extension.toLocaleString()} {extension > 1 ? timeframe.toLowerCase() + "s" 
+          <h1>Set {name.toLowerCase()} to be consumed within <em>{extension.toLocaleString()} {extension !== "1" ? timeframe.toLowerCase() + "s" 
           : timeframe.toLowerCase()}</em> past its expiration date?</h1></div>:<></>
       }
     </div>  
