@@ -1,6 +1,6 @@
 import {TextField } from "@material-ui/core";
 
-function SignUpForm({setUsername, setEmail, setPassword, setPasswordConfirmation}) {
+function SignupForm({setUsername, setEmail, setPassword, setPasswordConfirmation}) {
 
   function handleChange(e){
     const {name, value} = e.target
@@ -9,6 +9,8 @@ function SignUpForm({setUsername, setEmail, setPassword, setPasswordConfirmation
     else if(name === "password") {setPassword(value)}
     else if(name === "password_confirmation") {setPasswordConfirmation(value)}
   }
+
+  // Needs work to be used in the menu
 
   const userField = (label, type="text") => {
     let name = label.toLowerCase().replace(" ","_")
@@ -33,4 +35,4 @@ function SignUpForm({setUsername, setEmail, setPassword, setPasswordConfirmation
     </>
   );
 }
-export default SignUpForm;
+export default SignupForm;
