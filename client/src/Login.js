@@ -1,14 +1,9 @@
 import React from "react";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import Button from "@material-ui/core/Button";
-import { FormLabel} from "@material-ui/core";
+import { Button, DialogTitle, Dialog, DialogContent, FormLabel, DialogActions, TextField } from "@mui/material"
+
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 import { Flip, toast } from "react-toastify";
-import { TextField } from "@material-ui/core";
 
 function Login({ setUser, setError }) {
   const [open, setOpen] = React.useState(false);
@@ -61,16 +56,16 @@ function Login({ setUser, setError }) {
             <TextField
               required
               variant="outlined"
-              id="outline-required"
+              id="username"
               label="Username"
               name="username"
-              autoFocus="true"
+              autoFocus
               onChange={(e) => setUsername(e.target.value)}
             ></TextField>
             <TextField 
               required
               variant="outlined"
-              id="outline-required"
+              id="password"
               label="Password"
               name='password'
               type="password"
