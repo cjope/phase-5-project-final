@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.integer :storage
       t.integer :extension
       t.integer :ext_type
+      t.belongs_to :category
 
       t.timestamps
     end

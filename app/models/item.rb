@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+
+    belongs_to :category
     
     def extended_date
         t = self.ext_type
