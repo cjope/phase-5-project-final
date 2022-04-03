@@ -10,3 +10,6 @@ Item.create!(name: "Chips", perishable: false, extension: 3, ext_type: 3, storag
 Item.create!(name: "Cookies", perishable: false, extension: 4, ext_type: 3, storage: 1, category_id: 2)
 Item.create!(name: "Milk", perishable: true, extension: 1, ext_type: 2, storage: 2, category_id: 3)
 Item.create!(name: "Soy Milk", perishable: true, extension: 10, ext_type: 1, storage: 1, category_id: 3)
+
+User.create!(username: "cjope", email: "cjope@gmail.com", password: "123", password_confirmation: "123", is_admin: "true")
+User.create!(username: "scroob", email: "skroob@gmail.com", password: "12345", password_confirmation: "12345", is_admin: "false")
