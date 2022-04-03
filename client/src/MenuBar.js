@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { AppBar, Box, Toolbar, IconButton, MenuItem, Menu } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import Login from './Login';
+import EditUser from './EditUser';
+import SignupForm from './SignupForm';
 
 function Menubar() {
   const navigate = useNavigate()
@@ -20,7 +23,7 @@ function Menubar() {
   }
 
   function handleClick(e){
-    navigate(e)
+    // navigate(e)
     handleMenuClose()
   }
   
@@ -41,8 +44,11 @@ function Menubar() {
           </div>
         ):
         (
-          <div>
-            <MenuItem onClick={e=> handleClick("edit-user")}>Edit User</MenuItem>
+          <div onClick={handleMenuClose}>
+            {/* <MenuItem onClick={e=> handleClick("edit-user")}>Edit User</MenuItem> */}
+            <EditUser/>
+            <Login/>
+            {/* <SignupForm/> */}
           </div>
         )
       }
