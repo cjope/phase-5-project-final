@@ -1,8 +1,6 @@
 import React, {useState} from "react"
-import { Button, DialogTitle, Dialog, TextField, DialogContent } from "@mui/material"
+import { Button, DialogTitle, Dialog, TextField, DialogContent, FormLabel } from "@mui/material"
 import { Form } from "react-bootstrap"
-import AccountCircle from "@mui/icons-material/AccountCircle"
-import { createTheme } from "@mui/material"
 
 function EditUser({user}){
   const [email, setEmail] = useState([])
@@ -23,34 +21,38 @@ function EditUser({user}){
 
   return(
     <>
-      {/* <Button sx={{color:"white"}} onClick={handleClickToOpen} ><AccountCircle/></Button> */}
-      {/* <Dialog open={open} onClose={handleToClose} onSubmit={handleSubmit} > */}
-        {/* <DialogTitle>{"Edit User Details"}</DialogTitle> */}
-        {/* <DialogContent> */}
-          <Form style={{marginTop: "5%", padding: "5%", width:"600px", display:"flex", margin:"auto"}}>
+      <Button variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Edit</Button>
+      <Dialog open={open} onClose={handleToClose} onSubmit={handleSubmit}>
+        <DialogTitle>{"Edit User Details"}</DialogTitle>
+        <DialogContent>
+          <Form>
+            <FormLabel>Username</FormLabel>
             <TextField 
-              required
               variant="outlined"
-              id="outline-required"
-              label="UserName"
+              id="username"
+              label="Username"
               name='username'
+              autofocus
               defaultValue={user?.username}
               onChange={e=>setUsername(e.target.value)}
-            ></TextField>
+            />
+
+            <FormLabel>Email</FormLabel>
             <TextField 
-              required
               variant="outlined"
               id="outline-required"
               label="Email"
               name='email'
               defaultValue={user?.email}
               onChange={e=>setEmail(e.target.value)}
-            ></TextField>
-      <Button type="submit" color="primary" >Submit</Button>
-      <Button onClick={handleToClose} color="secondary" >Close</Button>
+            />
+
+            <Button type="submit" color="primary">Submit</Button>
+            <Button onClick={handleToClose} color="secondary">Close</Button>
+
           </Form>
-        {/* </DialogContent> */}
-      {/* </Dialog> */}
+        </DialogContent>
+      </Dialog>
     </>
   )
 }
