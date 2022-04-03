@@ -32,11 +32,11 @@ class UsersController < ApplicationController
         private
         
           def user_params
-            params.permit(:username, :first_name, :last_name, :password, :password_confirmation,  :age, :bio, :email)
+            params.permit(:username, :password, :password_confirmation, :email)
           end
         
           def user_update_params
-            params.permit(:username, :first_name, :last_name, :password, :password_confirmation,  :age, :bio, :email)
+            params.permit(:username, :password, :password_confirmation, :email)
           end
     
           def render_not_found(invalid)
