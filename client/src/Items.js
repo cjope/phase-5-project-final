@@ -1,17 +1,12 @@
 import { ListItem, Grid, Stack, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-
 function Items({items, setSelectedItem}) {
   const navigate = useNavigate()
   
   function handleViewItem(item){
-    setSelectedItem(item)
-    // console.log(item)
+      setSelectedItem(item)
     navigate("/item-detail")
   }
-
-
 
   const listItems = items?.map(item=> (
     <div key={item.id} >
@@ -21,7 +16,7 @@ function Items({items, setSelectedItem}) {
             <Paper 
               elevation={10}
               sx={{p:2, width:300}}
-              style={{fontSize:25}}
+              style={{fontSize:25, cursor: "pointer"}}
               onClick={e=>handleViewItem(item)}>{item.name}
             </Paper>
           </ListItem>
