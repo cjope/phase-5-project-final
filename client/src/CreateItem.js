@@ -1,25 +1,29 @@
 import { Form } from "react-bootstrap"
 import { useState } from "react"
 import EmojiPicker from "emoji-picker-react"
-import { AccordionDetails, InputLabel, MenuItem, FormControl, Accordion, AccordionSummary, Typography, TextField, Button, Select } from '@mui/material'
+import { AccordionDetails, InputLabel, MenuItem, FormControl, Accordion, AccordionSummary, Typography, TextField, Button, Select, Switch, FormGroup, FormControlLabel, FormLabel, RadioGroup, Radio } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { toast, Flip } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
-function CreateItem(){
-  const [timeframe, setTimeframe] = useState("")
-  const [name, setName] = useState(null)
-  const [extension, setExtension] = useState(null)
-  const [open, setOpen] = useState(false)
+function CreateItem({categories}){
+  const [name, setName] = useState("")
+  const [extension, setExtension] = useState(1)
   const [emoji, setEmoji] = useState("")
   const [expanded, setExpanded] = useState(false)
+  const [perishable, setPerishable] = useState(false)
+  const [storage, setStorage] = useState()
+  const [extType, setExtType] = useState()
+  const [category, setCategory] = useState()
+  const navigate = useNavigate()
 
-  function handleClose(){
-    setOpen(false)
-  }
+  const handlePerishableChange = (event) => {
+    setPerishable(event.target.checked);
+  };
 
-  function handleOpen(){
-    setOpen(true)
-  }
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   function handleEmoji(e){
     setEmoji(e.target.src)
@@ -28,12 +32,23 @@ function CreateItem(){
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/new-item", {
+    fetch("/create-item", {
       method: "POST",
-      body: JSON.stringify({name, timeframe, extension, emoji}),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name, 
+        extension: extension, 
+        perishable: perishable, 
+        storage: storage, 
+        ext_type: extType, 
+        category_id: category
+       }),
     }).then((r) => {
       if (r.ok) {
         r.json().then((item) => console.log(item))
+        navigate(0)
       } else {
         toast.error(`Item ${r.statusText}`, {
           autoClose: 1000,
@@ -45,13 +60,10 @@ function CreateItem(){
     })
   }
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-
   return(
     <div className="create-item">
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} style={{width:600}}>
+
         <FormControl sx={{m: 2 }}>
           <TextField 
             required
@@ -61,6 +73,7 @@ function CreateItem(){
             onChange={e=>setName(e.target.value)}
           />
         </FormControl>
+
         <FormControl sx={{m: 2 }}>
           <TextField 
             required
@@ -71,26 +84,60 @@ function CreateItem(){
             onChange={e=>setExtension(e.target.value)}
           />
         </FormControl>
-        <FormControl sx={{m:2}}>
-          <InputLabel>Timeframe</InputLabel>
-          <Select
-            label="Timeframe"
-            open={open}
-            onClose={handleClose}
-            onOpen={handleOpen}
-            value={timeframe}
-            variant="outlined"
-            onChange={e=>  setTimeframe(e.target.value)}
-          >
-            <MenuItem value="">
-              <em>Select One</em>
-            </MenuItem>
-            <MenuItem value="Day">Day</MenuItem>
-            <MenuItem value="Week">Week</MenuItem>
-            <MenuItem value="Month">Month</MenuItem>
-            <MenuItem value="Year">Year</MenuItem>
-          </Select>
+
+        <FormControl sx={{m: 2 }}>
+          <InputLabel id="categories">Categories</InputLabel>
+            <Select
+              id="category"
+              required
+              variant="outlined"
+              label= "Category"
+              name= "category"
+              value={category}
+              onChange={e=>setCategory(e.target.value)}>
+              {categories.map(category => {
+                return (
+                  <MenuItem key={category.id} id={category.id} value={category.id}>
+                    {category.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
         </FormControl>
+
+        <FormGroup sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", m:2}} >
+          <FormControl row  >
+            <FormLabel id="ext_type"/>
+            <RadioGroup row name="ext_type" onChange={e=>setExtType(e.target.value)} >
+              <FormControlLabel value={1} control={<Radio />} label="Day"/>
+              <FormControlLabel value={2} control={<Radio />} label="Week"/>
+              <FormControlLabel value={3} control={<Radio />} label="Month"/>
+              <FormControlLabel value={4} control={<Radio />} label="Year"/>
+            </RadioGroup>
+          </FormControl>
+
+          <FormControl>
+            <FormLabel id="storage"/>
+              <RadioGroup row name="storage" onChange={e=>setStorage(e.target.value)} >
+                <FormControlLabel value={1} control={<Radio />} label="Dry"/>
+                <FormControlLabel value={2} control={<Radio />} label="Cooler"/>
+                <FormControlLabel value={3} control={<Radio />} label="Freezer"/>
+              </RadioGroup>
+            </FormControl>
+
+            <FormControl>
+              <FormControlLabel 
+                label="Perishable"
+                control={
+                <Switch
+                  checked={perishable}
+                  onChange={handlePerishableChange}
+                  position="left"
+                />}
+              />
+            </FormControl>
+          </FormGroup>
+        
         <FormControl sx={{m:2}}>
           <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} >
             <AccordionSummary 
@@ -103,25 +150,19 @@ function CreateItem(){
                 Choose an Emoji
               </Typography>}
             </AccordionSummary>
-          <AccordionDetails>
-            {emoji? <img style={{margin:"auto"}} src={emoji} alt="emoji"/> : <></>}
-            <EmojiPicker
-              disableSkinTonePicker={true}
-              onEmojiClick={handleEmoji}
-            />
-          </AccordionDetails>
-        </Accordion>
-      </FormControl>
-      <Button type="submit">Confirm</Button>
-    </Form>
+            <AccordionDetails>
+              {emoji? <img style={{margin:"auto"}} src={emoji} alt="emoji"/> : <></>}
+              <EmojiPicker
+                disableSkinTonePicker={true}
+                onEmojiClick={handleEmoji}
+              />
+            </AccordionDetails>
+          </Accordion>
+        </FormControl>
 
-    {/* make this a function */}
-    <h1> Results: </h1>
-      {timeframe ?
-        <div>
-          <h1>Set {name.toLowerCase()} to be consumed within <em>{extension.toLocaleString()} {extension !== "1" ? timeframe.toLowerCase() + "s" 
-          : timeframe.toLowerCase()}</em> past its expiration date?</h1></div>:<></>
-      }
+        <Button type="submit">Confirm</Button>
+
+      </Form>
     </div>  
   )
 }

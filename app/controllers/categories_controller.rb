@@ -1,3 +1,7 @@
 class CategoriesController < ApplicationController
-    has_many :items
+
+    def index
+        render json: Category.all
+    end
+
 end

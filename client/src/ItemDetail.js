@@ -4,6 +4,7 @@ import { Paper, Stack } from '@mui/material';
 import { CalendarPicker } from '@mui/lab';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { differenceInMonths, differenceInWeeks, differenceInYears } from 'date-fns';
 
 const pastDate = new Date().getFullYear()-3
 const futureDate = new Date().getFullYear()+5
@@ -43,14 +44,24 @@ function ItemDetail({item}) {
         return Math.floor((utc2 - utc1) / _MS_PER_DAY)
     }
 
+    let date1 = new Date()
+    // let date2 = dateCalc()
     const a = new Date(),
           b = new Date(dateCalc()),
-          difference = dateDiffInDays(a, b)
+          difference = dateDiffInDays(a, b),
+          diffYears = differenceInYears(a, b),
+          diffWeeks = differenceInWeeks(a,b),
+          diffMonths = differenceInMonths(a,b)
 
     function handleDatePick(e){
         setDate(e)
         setClicked(true)
     }
+
+    console.log(diffYears)
+    console.log(diffMonths)
+    console.log(diffWeeks)
+
   
     return (
         <div>

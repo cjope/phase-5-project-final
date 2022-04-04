@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   put "/update", to: "users#update"
+  post "/create-item", to: "items#create"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
