@@ -46,7 +46,7 @@ function App() {
       <ToastContainer/>
       <MenuBar/>
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<Home categories={categories} />}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login user={user} setUser={setUser} error={error} setError={setError}/>}/>
         <Route path="/edit-user" element={<EditUser user={user} setUser={setUser}/>}/>

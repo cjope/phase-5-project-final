@@ -39,8 +39,8 @@ function Menubar() {
       {menuSelect === 0 ?
         (
           <div>
-            <MenuItem onClick={e=> handleClick("items")}>Items</MenuItem>
-            <MenuItem onClick={e=> handleClick("create-item")}>Create New Item</MenuItem>
+            <MenuItem onClick={e=> navigate("/items")}>Items</MenuItem>
+            <MenuItem onClick={e=> navigate("create-item")}>Create New Item</MenuItem>
           </div>
         ):
         (
