@@ -21,7 +21,7 @@ function EditUser({user}){
 
   return(
     <div style={{marginInline:5}}>
-      <Button variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Edit</Button>
+      <Button title="Edit User Settings" variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Edit</Button>
       <Dialog open={open} onClose={handleToClose} onSubmit={handleSubmit}>
         <DialogTitle>{"Edit User Details"}</DialogTitle>
         <DialogContent>

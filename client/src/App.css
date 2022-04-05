@@ -8,6 +8,7 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   background-color: rgb(104, 250, 160);
+  margin-top: 100px;
 }
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {

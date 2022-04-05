@@ -14,21 +14,16 @@ import Signup from "./Signup"
 import SignupForm from "./SignupForm"
 import User from "./User"
 import ItemDetail from "./ItemDetail"
-import {Button, Paper} from "@mui/material"
+import {Button} from "@mui/material"
+import Usda from "./Usda"
 
 function App() {
   const [user, setUser] = useState([])
   const [items, setItems] = useState(null)
   const [error, setError] = useState(null)
-
-
   const [selectedItem, setSelectedItem] = useState([])
   const [filteredItems, setFilteredItems] = useState("")
-
-
   const navigate = useNavigate()
-
-
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
@@ -42,42 +37,31 @@ function App() {
     .then(r => r.json())
     .then(items => setItems(items))
   },[])
-
   
   useEffect(() => {
     fetch("/categories")
     .then(r => r.json())
     .then(cat => setCategories(cat))
-  },[])
- 
-  
+  },[])  
 
   function handleItemNav(item){
     setSelectedItem(item)
     navigate("/item-detail")
     setFilteredItems("")
-    
   }
 
-  const listFilteredItem = items?.filter(item=> item.name.toLowerCase().includes(filteredItems.toLowerCase()))
-
-  const displayFilteredItem = listFilteredItem?.map(item=> {return(
+  const listFilteredItem = items?.filter(item=> item.name.toLowerCase().trim().includes(filteredItems.toLowerCase().trim())).map(item=> {return(
     <div key={item.id} style={{maxWidth:200, marginRight:100, marginLeft:"auto", textAlign:"right"}}>
-      <Button variant="outlined" sx={{marginRight:2, marginTop:1}} value={item.name} onClick={e=>handleItemNav(item)} >{item.name}</Button>
+      <Button variant="outlined" sx={{marginRight:2, marginTop:5}} value={item.name} onClick={e=>handleItemNav(item)} >{item.name}</Button>
     </div>
   )})
 
-
-
-
   return (
     <>
-      <ToastContainer/>
-      
+      <ToastContainer/>      
       <MenuBar setFilteredItems={setFilteredItems} filteredItems={filteredItems}/>
-      {filteredItems? displayFilteredItem:null}
+      {filteredItems? listFilteredItem:null}
       <Routes>
-
         <Route path="/" element={<Home categories={categories} />}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login user={user} setUser={setUser} error={error} setError={setError}/>}/>
@@ -88,6 +72,8 @@ function App() {
         <Route path="/user" element={<User user={user} />}/>
         <Route path="/signup-form" element={<SignupForm/>}/>
         <Route path="/logout" element={<Logout setUser={setUser}/>}/>
+        <Route path="/usda" element={<Usda/>}/>
+
       </Routes>
     </>
   );

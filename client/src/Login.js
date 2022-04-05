@@ -1,27 +1,26 @@
-import React from "react";
+import React from "react"
 import { Button, DialogTitle, Dialog, DialogContent, FormLabel, DialogActions, TextField } from "@mui/material"
-
-import { Form } from "react-bootstrap";
-import { useState } from "react";
-import { Flip, toast } from "react-toastify";
+import { Form } from "react-bootstrap"
+import { useState } from "react"
+import { Flip, toast } from "react-toastify"
 
 function Login({ setUser, setError }) {
-  const [open, setOpen] = React.useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   const handleClickToOpen = () => {
     setOpen(true);
-  };
+  }
 
   const handleToClose = () => {
     setOpen(false);
-    setUsername("");
-    setPassword("");
-  };
+    setUsername("")
+    setPassword("")
+  }
 
   function handleLogin(e) {
-    e.preventDefault();
+    e.preventDefault()
     fetch("/login", {
       method: "POST",
       headers: {
@@ -30,7 +29,7 @@ function Login({ setUser, setError }) {
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => setUser(user))
         handleToClose();
       } else {
         return r.json().then((user) =>
@@ -47,7 +46,7 @@ function Login({ setUser, setError }) {
 
   return (
     <div style={{marginInline:5}}>
-      <Button variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Login</Button>
+      <Button title="Login Existing User" variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Login</Button>
       <Dialog open={open} onClose={handleToClose} onSubmit={handleLogin}>
         <DialogTitle>{"Please Log In"}</DialogTitle>
         <DialogContent>
