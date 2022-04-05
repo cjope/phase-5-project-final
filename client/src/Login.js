@@ -46,7 +46,7 @@ function Login({ setUser, setError }) {
   }
 
   return (
-    <div>
+    <div style={{marginInline:5}}>
       <Button variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Login</Button>
       <Dialog open={open} onClose={handleToClose} onSubmit={handleLogin}>
         <DialogTitle>{"Please Log In"}</DialogTitle>

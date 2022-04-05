@@ -14,7 +14,7 @@ function CreateItem({categories}){
   const [perishable, setPerishable] = useState(false)
   const [storage, setStorage] = useState()
   const [extType, setExtType] = useState()
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState("")
   const navigate = useNavigate()
 
   const handlePerishableChange = (event) => {
@@ -106,7 +106,7 @@ function CreateItem({categories}){
         </FormControl>
 
         <FormGroup sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", m:2}} >
-          <FormControl row  >
+          <FormControl>
             <FormLabel id="ext_type"/>
             <RadioGroup row name="ext_type" onChange={e=>setExtType(e.target.value)} >
               <FormControlLabel value={1} control={<Radio />} label="Day"/>

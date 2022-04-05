@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import "./App.css"
@@ -14,12 +14,21 @@ import Signup from "./Signup"
 import SignupForm from "./SignupForm"
 import User from "./User"
 import ItemDetail from "./ItemDetail"
+import {Button, Paper} from "@mui/material"
 
 function App() {
   const [user, setUser] = useState([])
   const [items, setItems] = useState(null)
   const [error, setError] = useState(null)
+
+
   const [selectedItem, setSelectedItem] = useState([])
+  const [filteredItems, setFilteredItems] = useState("")
+
+
+  const navigate = useNavigate()
+
+
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
@@ -40,12 +49,35 @@ function App() {
     .then(r => r.json())
     .then(cat => setCategories(cat))
   },[])
+ 
+  
+
+  function handleItemNav(item){
+    setSelectedItem(item)
+    navigate("/item-detail")
+    setFilteredItems("")
+    
+  }
+
+  const listFilteredItem = items?.filter(item=> item.name.toLowerCase().includes(filteredItems.toLowerCase()))
+
+  const displayFilteredItem = listFilteredItem?.map(item=> {return(
+    <div key={item.id} style={{maxWidth:200, marginRight:100, marginLeft:"auto", textAlign:"right"}}>
+      <Button variant="outlined" sx={{marginRight:2, marginTop:1}} value={item.name} onClick={e=>handleItemNav(item)} >{item.name}</Button>
+    </div>
+  )})
+
+
+
 
   return (
     <>
       <ToastContainer/>
-      <MenuBar/>
+      
+      <MenuBar setFilteredItems={setFilteredItems} filteredItems={filteredItems}/>
+      {filteredItems? displayFilteredItem:null}
       <Routes>
+
         <Route path="/" element={<Home categories={categories} />}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login user={user} setUser={setUser} error={error} setError={setError}/>}/>
