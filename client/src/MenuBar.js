@@ -7,7 +7,7 @@ import Login from './Login';
 import EditUser from './EditUser';
 import Signup from './Signup';
 
-function Menubar({setFilteredItems}) {
+function Menubar({setFilteredItems, user}) {
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState(null)
   const [anchorEl2, setAnchorEl2] = useState(null)
@@ -101,7 +101,7 @@ const renderMenu = (
           <Box sx={{ flexGrow: 1 }}/>
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             <TextField id="outlined-search" variant="outlined" label="Search field" type="search" autoSave='false' onChange={handleSearch} />
-            <IconButton size="large" edge="end" color="inherit" onClick={e=>handleMenuOpen(e)}><AccountCircle/></IconButton>
+            <IconButton title={`Logged in as ${user?.username}`} size="large" edge="end" color="inherit" onClick={e=>handleMenuOpen(e)}><AccountCircle/></IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}/>
         </Toolbar>

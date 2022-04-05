@@ -59,7 +59,7 @@ function App() {
   return (
     <>
       <ToastContainer/>      
-      <MenuBar setFilteredItems={setFilteredItems} filteredItems={filteredItems}/>
+      <MenuBar setFilteredItems={setFilteredItems} filteredItems={filteredItems} user={user}/>
       {filteredItems? listFilteredItem:null}
       <Routes>
         <Route path="/" element={<Home categories={categories} />}/>

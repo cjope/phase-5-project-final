@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :items
 
     before_create :case_names
     before_update :case_names

@@ -61,12 +61,15 @@ function ItemDetail({item}) {
     console.log(diffYears)
     console.log(diffMonths)
     console.log(diffWeeks)
+    console.log(difference)
+    console.log(clicked)
+    console.log(item.id)
 
   
     return (
         <div>
             <Paper elevation={10} sx={{p:2, width:750, m:"auto", mt:5, textAlign:"center", fontSize:25}}>
-                { clicked & item.id ? `Will expire ${difference} days from today`: "Pick a date"}
+                { clicked & item.id>0 ? `Will expire ${difference} days from today`: "Pick a date"}
             </Paper>
             <div style={{textAlign: "center", display:"flex", flexDirection:"row", justifyContent:"center",  alignItems:"center"}}>
                 <div style={{display:"flex", justifyContent:"space-around", flexDirection:"row", marginTop:20, marginRight: 25}}>
