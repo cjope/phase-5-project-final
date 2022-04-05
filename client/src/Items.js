@@ -2,13 +2,13 @@ import { ListItem, Grid, Stack, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 function Items({items, setSelectedItem}) {
   const navigate = useNavigate()
-  
+
   function handleViewItem(item){
       setSelectedItem(item)
     navigate("/item-detail")
   }
 
-  const listItems = items?.map(item=> (
+  const listItems = items?.map(item => (
     <div key={item.id} >
       <Grid>
         <Stack spacing={2}>
@@ -29,6 +29,6 @@ function Items({items, setSelectedItem}) {
       <div style={{textAlign: "center", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
         {listItems}
     </div>
-  );
+  )
 }
 export default Items

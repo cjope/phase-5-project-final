@@ -18,12 +18,12 @@ function CreateItem({categories}){
   const navigate = useNavigate()
 
   const handlePerishableChange = (event) => {
-    setPerishable(event.target.checked);
-  };
+    setPerishable(event.target.checked)
+  }
 
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+    setExpanded(isExpanded ? panel : false)
+  }
 
   function handleEmoji(e){
     setEmoji(e.target.src)
@@ -31,18 +31,18 @@ function CreateItem({categories}){
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     fetch("/create-item", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: name, 
-        extension: extension, 
-        perishable: perishable, 
-        storage: storage, 
-        ext_type: extType, 
+        name: name,
+        extension: extension,
+        perishable: perishable,
+        storage: storage,
+        ext_type: extType,
         category_id: category
        }),
     }).then((r) => {
@@ -100,12 +100,12 @@ function CreateItem({categories}){
                   <MenuItem key={category.id} id={category.id} value={category.id}>
                     {category.name}
                   </MenuItem>
-                );
+                )
               })}
             </Select>
         </FormControl>
 
-        <FormGroup sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", m:2}} >
+        <FormGroup sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", m:2}}>
           <FormControl>
             <FormLabel id="ext_type"/>
             <RadioGroup row name="ext_type" onChange={e=>setExtType(e.target.value)} >
@@ -126,7 +126,7 @@ function CreateItem({categories}){
             </FormControl>
 
             <FormControl>
-              <FormControlLabel 
+              <FormControlLabel
                 label="Perishable"
                 control={
                 <Switch
@@ -139,14 +139,14 @@ function CreateItem({categories}){
           </FormGroup>
         
         <FormControl sx={{m:2}}>
-          <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} >
+          <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
             <AccordionSummary 
               expandIcon={<ExpandMoreIcon/>}
               aria-controls="panel1bh-content"
               id="panel1bh-header"
             >
               {emoji? <img style={{margin:"auto"}} src={emoji} alt="emoji"/> :
-              <Typography sx={{ margin: "auto"}} >
+              <Typography sx={{ margin: "auto"}}>
                 Choose an Emoji
               </Typography>}
             </AccordionSummary>
@@ -163,7 +163,7 @@ function CreateItem({categories}){
         <Button type="submit">Confirm</Button>
 
       </Form>
-    </div>  
+    </div>
   )
 }
 export default CreateItem

@@ -8,12 +8,12 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  }));
+  }))
 
 function Usda(){
     const [usda, setUsda] = useState(null)
     const usdaKey = "YWMOWmMzoBb8bITGY9warb3z1GH5J0z8zu9rENfs"
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false)
     const [usdaSearch, setUsdaSearch] = useState("")
     
     const handleClickToOpen = () => {
@@ -56,7 +56,7 @@ function Usda(){
 
     return(
         <div style={{display:"flex", flexDirection:"column"}}>
-            <Card variant="outlined" sx={{m:5,fontSize:50, textAlign:"center"}}> USDA SEARCH</Card>
+            <Card variant="outlined" sx={{m:5,fontSize:50, textAlign:"center"}}>USDA SEARCH</Card>
             <TextField id="outlined-search" variant="outlined" sx={{m:2}} label="Search field" type="search" autoSave='false' onChange={e=>setUsdaSearch(e.target.value)}/>
             <Button variant="outlined" size="large" sx={{p:2, m:2}} onClick={handleUsdaSearch}>Search</Button>
             <Box sx={{m:2 }}>

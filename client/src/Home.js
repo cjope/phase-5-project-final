@@ -3,7 +3,7 @@ import { Paper } from "@mui/material";
 function Home({categories}) {
 
   const listCategories = categories.map(category => (
-    <div key={category.id} >
+    <div key={category.id}>
       <Paper sx={{m:2, width:200, fontSize:30}}>{category.name}</Paper>
       {category.items.map(item=>(
         <div key={item.id}>
@@ -13,10 +13,10 @@ function Home({categories}) {
     </div>
   ))
 
-    return (
-      <div>
-        {listCategories}
-      </div>
-    );
-  }
-  export default Home;
+  return (
+    <div>
+      {listCategories}
+    </div>
+  )
+}
+export default Home

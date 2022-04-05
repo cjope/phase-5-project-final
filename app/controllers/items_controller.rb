@@ -13,6 +13,11 @@ class ItemsController < ApplicationController
         render json: item
     end
 
+    def destroy
+        item = Item.find(params[:id])
+        item.destroy!
+        head :no_content
+    end
 
     private
 

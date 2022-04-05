@@ -10,12 +10,10 @@ function SignupForm({setUsername, setEmail, setPassword, setPasswordConfirmation
     else if(name === "password_confirmation") {setPasswordConfirmation(value)}
   }
 
-  // Needs work to be used in the menu
-
   const userField = (label, type="text") => {
     let name = label.toLowerCase().replace(" ","_")
     return(
-      <TextField 
+      <TextField
         required
         variant="outlined"
         label={label}
@@ -33,6 +31,6 @@ function SignupForm({setUsername, setEmail, setPassword, setPasswordConfirmation
       {userField("Password", "password")}
       {userField("Password Confirmation", "password")}
     </>
-  );
+  )
 }
-export default SignupForm;
+export default SignupForm

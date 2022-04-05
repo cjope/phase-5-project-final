@@ -15,4 +15,4 @@ function User({user}) {
       </div>
     )
   }
-  export default User;
+  export default User

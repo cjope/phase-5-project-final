@@ -32,6 +32,8 @@ function App() {
     .then(user => setUser(user))
   },[])
 
+  console.log(user)
+
   useEffect(() => {
     fetch("/items")
     .then(r => r.json())
@@ -58,7 +60,7 @@ function App() {
 
   return (
     <>
-      <ToastContainer/>      
+      <ToastContainer/>
       <MenuBar setFilteredItems={setFilteredItems} filteredItems={filteredItems} user={user}/>
       {filteredItems? listFilteredItem:null}
       <Routes>
@@ -73,10 +75,9 @@ function App() {
         <Route path="/signup-form" element={<SignupForm/>}/>
         <Route path="/logout" element={<Logout setUser={setUser}/>}/>
         <Route path="/usda" element={<Usda/>}/>
-
       </Routes>
     </>
-  );
+  )
 }
 
 export default App

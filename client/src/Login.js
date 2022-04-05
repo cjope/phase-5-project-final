@@ -5,16 +5,16 @@ import { useState } from "react"
 import { Flip, toast } from "react-toastify"
 
 function Login({ setUser, setError }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
   const handleClickToOpen = () => {
-    setOpen(true);
+    setOpen(true)
   }
 
   const handleToClose = () => {
-    setOpen(false);
+    setOpen(false)
     setUsername("")
     setPassword("")
   }
@@ -61,7 +61,7 @@ function Login({ setUser, setError }) {
               autoFocus
               onChange={(e) => setUsername(e.target.value)}
             ></TextField>
-            <TextField 
+            <TextField
               required
               variant="outlined"
               id="password"
@@ -84,6 +84,6 @@ function Login({ setUser, setError }) {
         </DialogActions>
       </Dialog>
     </div>
-  );
+  )
 }
-export default Login;
+export default Login

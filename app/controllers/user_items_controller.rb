@@ -1,12 +1,8 @@
 class UserItemsController < ApplicationController
 
     def index
-        render json: UserItem.all
-    end
-
-    def show
-      cart = UserItem.where(user_id: session[:user_id])
-      render json: cart
+      items = UserItem.where(user_id: session[:user_id])
+      render json: items
     end
     
     def create

@@ -44,41 +44,28 @@ function ItemDetail({item}) {
         return Math.floor((utc2 - utc1) / _MS_PER_DAY)
     }
 
-    let date1 = new Date()
-    // let date2 = dateCalc()
     const a = new Date(),
           b = new Date(dateCalc()),
-          difference = dateDiffInDays(a, b),
-          diffYears = differenceInYears(a, b),
-          diffWeeks = differenceInWeeks(a,b),
-          diffMonths = differenceInMonths(a,b)
+          difference = dateDiffInDays(a, b)
 
     function handleDatePick(e){
         setDate(e)
         setClicked(true)
     }
-
-    console.log(diffYears)
-    console.log(diffMonths)
-    console.log(diffWeeks)
-    console.log(difference)
-    console.log(clicked)
-    console.log(item.id)
-
   
     return (
         <div>
             <Paper elevation={10} sx={{p:2, width:750, m:"auto", mt:5, textAlign:"center", fontSize:25}}>
                 { clicked & item.id>0 ? `Will expire ${difference} days from today`: "Pick a date"}
             </Paper>
-            <div style={{textAlign: "center", display:"flex", flexDirection:"row", justifyContent:"center",  alignItems:"center"}}>
+            <div style={{textAlign: "center", display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center"}}>
                 <div style={{display:"flex", justifyContent:"space-around", flexDirection:"row", marginTop:20, marginRight: 25}}>
                     <Stack spacing={6}>
-                        <Paper elevation={10} sx={{p:2, width:340, paddingBottom:6, paddingTop:6  }} style={{fontSize:25}}>
-                            {item.id ? item.name : <Link to="/items"> Choose an Item</Link>}
+                        <Paper elevation={10} sx={{p:2, width:340, paddingBottom:6, paddingTop:6 }} style={{fontSize:25}}>
+                            {item.id ? item.name : <Link to="/items">Choose an Item</Link>}
                         </Paper>
                         <Paper elevation={10}>
-                            <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>Item is {item.perishable ? "Perishable":"Shelf Stable"}</Paper>    
+                            <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>Item is {item.perishable ? "Perishable":"Shelf Stable"}</Paper>
                             <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>Storage Type: {item.storage_type}</Paper>
                         </Paper>
                         <Paper elevation={10}>
@@ -95,18 +82,18 @@ function ItemDetail({item}) {
                                 date={date}
                                 minDate={minDate}
                                 maxDate={maxDate}
-                                onChange={e=> handleDatePick(e)}
+                                onChange={e => handleDatePick(e)}
                                 />
                             </Paper>
-                            <Paper elevation={10} >
+                            <Paper elevation={10}>
                                 <h3>Can be Extended {item.timeframe} to:</h3>
                                 <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>{dateCalc()}</Paper>
-                            </Paper> 
+                            </Paper>
                         </Stack>
                     </LocalizationProvider>
                 </div>
             </div>
         </div>
-    );
+    )
 }
 export default ItemDetail

@@ -5,23 +5,23 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 
 function Logout({ setUser }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   const handleClickToOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleToClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   function handleLogout() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        setUser(null);
+        setUser(null)
       }
-    });
-    handleToClose();
+    })
+    handleToClose()
   }
 
   return (
@@ -41,6 +41,6 @@ function Logout({ setUser }) {
         </DialogActions>
       </Dialog>
     </div>
-  );
+  )
 }
 export default Logout

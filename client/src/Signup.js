@@ -5,18 +5,18 @@ import { toast, Flip } from "react-toastify";
 import { Form } from "react-bootstrap";
 
 function Signup({ setUser }) {
-  const [email, setEmail] = useState([]);
-  const [username, setUsername] = useState([]);
+  const [email, setEmail] = useState([])
+  const [username, setUsername] = useState([])
   const [password, setPassword] = useState([])
-  const [passwordConfirmation, setPasswordConfirmation] = useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [passwordConfirmation, setPasswordConfirmation] = useState([])
+  const [open, setOpen] = useState(false)
 
   function handleClickToOpen() {
-    setOpen(true);
+    setOpen(true)
   }
 
   function handleToClose() {
-    setOpen(false);
+    setOpen(false)
   }
 
   function handleSignUp(e) {
@@ -36,7 +36,7 @@ function Signup({ setUser }) {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => setUser(user))
         handleToClose()
       } else {
         toast.error( r.errors, {
@@ -58,7 +58,7 @@ function Signup({ setUser }) {
         <DialogTitle>{"Sign Up"}</DialogTitle>
         <DialogContent>
           <Form onSubmit={handleSignUp}>
-            <SignupForm 
+            <SignupForm
             setUsername={setUsername}
             setEmail={setEmail}
             setPassword={setPassword}
@@ -76,6 +76,6 @@ function Signup({ setUser }) {
         </DialogContent>
       </Dialog>
     </>
-  );
+  )
 }
-export default Signup;
+export default Signup

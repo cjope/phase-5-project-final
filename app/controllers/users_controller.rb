@@ -9,6 +9,12 @@ class UsersController < ApplicationController
           user = User.find_by(id: session[:user_id])
           render json: user
         end
+
+        def items
+          user = User.find_by(id: session[:user_id])
+          items = UserItem.where(user_id: user.id)
+          render json: items
+        end
         
         def create
           user = User.create!(user_params)

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppBar, Box, Toolbar, IconButton, MenuItem, Menu, TextField, Button } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Menu, TextField, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Login from './Login';
@@ -37,14 +37,14 @@ function Menubar({setFilteredItems, user}) {
   function handleSearch(e){
     setFilteredItems(e.target.value)
   }
-  
+
   const renderUserMenu = (
-    <Menu 
-      anchorEl={anchorEl2} 
-      anchorOrigin={{vertical: 'top', horizontal: 'left' }} 
-      keepMounted 
-      transformOrigin={{ vertical: 'top', horizontal: 'right'}} 
-      open={isUserMenuOpen} 
+    <Menu
+      anchorEl={anchorEl2}
+      anchorOrigin={{vertical: 'top', horizontal: 'left' }}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right'}}
+      open={isUserMenuOpen}
       onClose={handleMenuClose}
     >
     <div onClick={handleMenuClose} style={{display:"flex", flexDirection:"row-reverse"}}>
@@ -57,12 +57,12 @@ function Menubar({setFilteredItems, user}) {
   )
 
 const renderMenu = (
-  <Menu 
-    anchorEl={anchorEl} 
-    anchorOrigin={{vertical: 'top', horizontal: 'right' }} 
-    keepMounted 
-    transformOrigin={{ vertical: 'top', horizontal: 'left'}} 
-    open={isMenuOpen} 
+  <Menu
+    anchorEl={anchorEl}
+    anchorOrigin={{vertical: 'top', horizontal: 'right' }}
+    keepMounted
+    transformOrigin={{ vertical: 'top', horizontal: 'left'}}
+    open={isMenuOpen}
     onClose={handleMenuClose}
   >
     <div style={{display:"flex"}}>
@@ -78,7 +78,6 @@ const renderMenu = (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
-
           <IconButton
             size="large"
             edge="start"
@@ -100,7 +99,7 @@ const renderMenu = (
             <h2>Extend</h2>
           <Box sx={{ flexGrow: 1 }}/>
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
-            <TextField id="outlined-search" variant="outlined" label="Search field" type="search" autoSave='false' onChange={handleSearch} />
+            <TextField id="outlined-search" variant="outlined" label="Search field" type="search" autoSave='false' onChange={handleSearch}/>
             <IconButton title={`Logged in as ${user?.username}`} size="large" edge="end" color="inherit" onClick={e=>handleMenuOpen(e)}><AccountCircle/></IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}/>

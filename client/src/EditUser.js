@@ -27,7 +27,7 @@ function EditUser({user}){
         <DialogContent>
           <Form>
             <FormLabel>Username</FormLabel>
-            <TextField 
+            <TextField
               variant="outlined"
               id="username"
               label="Username"
