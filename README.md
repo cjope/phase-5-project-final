@@ -1,10 +1,8 @@
 Needed:
 
-Backend:
+User Item:
 
-    User Item Relationship - Why have a user is nothing belongs to them?
-    Item Category Foreign Key?
+Admin has all items, can only add through admin, non admin can "like" and add an item to their items - This will at least solve the headache of the screwy relationships.
 
-
-FrontEnd:
+Fix styling everywhere - use css where possible
     

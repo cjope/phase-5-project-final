@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   put "/update", to: "users#update"
   post "/create-item", to: "items#create"
-  get "/user_items", to: "users_items#index"
-  post "/delete_item/:id", to: "user_items#destroy"
+  get "/user_items", to: "user_items#index"
+  delete "/delete_item/:id", to: "user_items#destroy"
+  get "/test", to: "user_items#test"
+
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

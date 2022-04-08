@@ -1,6 +1,5 @@
 import React from "react"
-import { Button, DialogTitle, Dialog, DialogContent, FormLabel, DialogActions, TextField } from "@mui/material"
-import { Form } from "react-bootstrap"
+import { Button, DialogTitle, Dialog, DialogContent, DialogActions, TextField, FormControl, Stack } from "@mui/material"
 import { useState } from "react"
 import { Flip, toast } from "react-toastify"
 
@@ -45,38 +44,40 @@ function Login({ setUser, setError }) {
   }
 
   return (
-    <div style={{marginInline:5}}>
+          <div style={{marginInline:5}}>
       <Button title="Login Existing User" variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Login</Button>
       <Dialog open={open} onClose={handleToClose} onSubmit={handleLogin}>
         <DialogTitle>{"Please Log In"}</DialogTitle>
         <DialogContent>
-          <Form>
-            <FormLabel>Username</FormLabel>
-            <TextField
-              required
-              variant="outlined"
-              id="username"
-              label="Username"
-              name="username"
-              autoFocus
-              onChange={(e) => setUsername(e.target.value)}
-            ></TextField>
-            <TextField
-              required
-              variant="outlined"
-              id="password"
-              label="Password"
-              name='password'
-              type="password"
-              onChange={e=>setPassword(e.target.value)}
-          ></TextField>
-        </Form>
+      <Stack>
+        <FormControl sx={{m: 2 }}>
+          <TextField 
+            required
+            variant="outlined"
+            label= "Username"
+            name= "username"
+            onChange={e=>setUsername(e.target.value)}
+          />
+        </FormControl>
+
+        <FormControl sx={{m: 2 }}>
+          <TextField 
+            required
+            variant="outlined"
+            label= "Password"
+            name= "password"
+            type="password"
+            onChange={e=>setPassword(e.target.value)}
+          />
+        </FormControl>
+      </Stack>   
       </DialogContent>
-      <DialogActions>
-        <Button onClick={handleToClose} color="primary" autoFocus>Close</Button>
+      <DialogActions sx={{display:"flex", justifyContent:"space-around"}}>
+        <Button onClick={handleToClose} variant="outlined" color="warning" autoFocus>Close</Button>
         <Button
           onClick={handleLogin}
-          color="primary"
+          variant="outlined"
+          color="success"
           autoFocus
           primary="true"
         >OK

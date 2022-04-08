@@ -6,6 +6,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Login from './Login';
 import EditUser from './EditUser';
 import Signup from './Signup';
+import Logout from './Logout';
 
 function Menubar({setFilteredItems, user}) {
   const navigate = useNavigate()
@@ -48,9 +49,14 @@ function Menubar({setFilteredItems, user}) {
       onClose={handleMenuClose}
     >
     <div onClick={handleMenuClose} style={{display:"flex", flexDirection:"row-reverse"}}>
-      <EditUser/>
+      {user ? <>
+        <EditUser/>
+        <Logout/>
+        </>:<>
       <Login/>
       <Signup/>
+        </>}
+    
     </div>
 
     </Menu>
@@ -67,7 +73,7 @@ const renderMenu = (
   >
     <div style={{display:"flex"}}>
       <Button variant="outlined" title="View Items List" style={{marginInline:5}} onClick={e=> handleClick("/items")}>Items</Button>
-      <Button variant="outlined" title="Create a New Item" style={{marginInline:5}} onClick={e=> handleClick("/create-item")}>Create New Item</Button>
+      <Button variant="outlined" title="Create a New Item" disabled={!user?.is_admin} style={{marginInline:5}} onClick={e=> handleClick("/create-item")}>Create New Item</Button>
       <Button variant="outlined" title="Search USDA" style={{marginInline:5}} onClick={e=> handleClick("/usda")}>USDA Search</Button>
     </div>
   </Menu>

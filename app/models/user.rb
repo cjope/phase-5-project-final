@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
-    has_many :user_items
+    has_many :user_items, dependent: :destroy, dependent: :delete_all
     has_many :items, through: :user_items
 
     before_create :case_names

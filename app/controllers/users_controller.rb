@@ -35,6 +35,10 @@ class UsersController < ApplicationController
           head :no_content
         end
 
+        def ext_time
+          render json: self.timeframe
+        end
+
         private
         
           def user_params

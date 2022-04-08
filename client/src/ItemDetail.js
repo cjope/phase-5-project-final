@@ -1,20 +1,21 @@
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { Paper, Stack } from '@mui/material';
+import { Button, IconButton, Paper, Stack } from '@mui/material';
 import { CalendarPicker } from '@mui/lab';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { differenceInMonths, differenceInWeeks, differenceInYears } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const pastDate = new Date().getFullYear()-3
 const futureDate = new Date().getFullYear()+5
 const minDate = new Date(pastDate, 1, 1)
 const maxDate = new Date(futureDate, 1, 1)
 
-function ItemDetail({item}) {
+function ItemDetail({item, user}) {
     const [date, setDate] = useState(new Date())
     const [clicked, setClicked] = useState(false)
     const _MS_PER_DAY = 1000 * 60 * 60 * 24
+    const navigate = useNavigate()
 
     function dateCalc(){
     let day = date.getDate()
@@ -52,9 +53,15 @@ function ItemDetail({item}) {
         setDate(e)
         setClicked(true)
     }
+
+    function handleDeleteItems(){
+        fetch(`/delete_item/${item.id}`,{
+          method: "DELETE"
+        })
+      }
   
     return (
-        <div>
+        <div style={{display:"flex", flexDirection:"column"}} >
             <Paper elevation={10} sx={{p:2, width:750, m:"auto", mt:5, textAlign:"center", fontSize:25}}>
                 { clicked & item.id>0 ? `Will expire ${difference} days from today`: "Pick a date"}
             </Paper>
@@ -62,7 +69,7 @@ function ItemDetail({item}) {
                 <div style={{display:"flex", justifyContent:"space-around", flexDirection:"row", marginTop:20, marginRight: 25}}>
                     <Stack spacing={6}>
                         <Paper elevation={10} sx={{p:2, width:340, paddingBottom:6, paddingTop:6 }} style={{fontSize:25}}>
-                            {item.id ? item.name : <Link to="/items">Choose an Item</Link>}
+                            {item.id ? item.name : navigate("/items")}
                         </Paper>
                         <Paper elevation={10}>
                             <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>Item is {item.perishable ? "Perishable":"Shelf Stable"}</Paper>
@@ -93,6 +100,12 @@ function ItemDetail({item}) {
                     </LocalizationProvider>
                 </div>
             </div>
+            {user?.is_admin ? <div style={{display:"flex", justifyContent:"center"}}>
+                <Button variant="outlined">Update Item</Button>
+                <Button variant="outlined" onClick={handleDeleteItems}>Delete Item</Button>
+            </div>:<></>}
+            <div><IconButton>Add<FavoriteIcon></FavoriteIcon></IconButton> </div>
+
         </div>
     )
 }

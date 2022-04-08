@@ -1,8 +1,7 @@
-import { Dialog, DialogContent, DialogTitle, Button } from "@material-ui/core";
+// import { Dialog, DialogContent, DialogTitle, Button } from "@material-ui/core";
 import React, { useState } from "react";
-import SignupForm from "./SignupForm";
 import { toast, Flip } from "react-toastify";
-import { Form } from "react-bootstrap";
+import { DialogActions, FormControl, TextField, Dialog, DialogContent, DialogTitle, Button, Stack } from "@mui/material";
 
 function Signup({ setUser }) {
   const [email, setEmail] = useState([])
@@ -19,7 +18,7 @@ function Signup({ setUser }) {
     setOpen(false)
   }
 
-  function handleSignUp(e) {
+  function handleSignup(e) {
     e.preventDefault()
     
     fetch("/signup", {
@@ -50,32 +49,110 @@ function Signup({ setUser }) {
   }
 
   return (
-    <>
-      <Button variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>
-        Signup
+    <div style={{marginInline:5}}>
+    <Button title="Login Existing User" variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Sign Up</Button>
+    <Dialog open={open} onClose={handleToClose} onSubmit={handleSignup}>
+      <DialogTitle>{"Sign Up"}</DialogTitle>
+      <DialogContent>
+      <Stack>
+      <FormControl sx={{m: 2 }}>
+        <TextField 
+          required
+          autoFocus
+          variant="outlined"
+          label= "Username"
+          name= "username"
+          onChange={e=>setUsername(e.target.value)}
+        />
+      </FormControl>
+
+      <FormControl sx={{m: 2 }}>
+        <TextField 
+          required
+          autoFocus
+          variant="outlined"
+          label= "Email"
+          name= "email"
+          type="email"
+          onChange={e=>setEmail(e.target.value)}
+        />
+      </FormControl>
+
+      <FormControl sx={{m: 2 }}>
+        <TextField 
+          required
+          autoFocus
+          variant="outlined"
+          label= "Password"
+          name= "password"
+          type="password"
+          onChange={e=>setPassword(e.target.value)}
+        />
+      </FormControl>
+
+      <FormControl sx={{m: 2 }}>
+        <TextField 
+          required
+          autoFocus
+          variant="outlined"
+          label= "Confirm Password"
+          name= "password_confirmation"
+          type="password"
+          onChange={e=>setPasswordConfirmation(e.target.value)}
+        />
+      </FormControl>
+      </Stack>
+    </DialogContent>
+    <DialogActions sx={{display:"flex", justifyContent:"space-around"}}>
+      <Button onClick={handleToClose} variant="outlined" color="warning" autoFocus>Close</Button>
+      <Button
+        variant="outlined"
+        color="success"
+        autoFocus
+        primary="true"
+        onClick={handleSignup}
+      >OK
       </Button>
-      <Dialog open={open} onClose={handleToClose} onSubmit={handleSignUp}>
-        <DialogTitle>{"Sign Up"}</DialogTitle>
-        <DialogContent>
-          <Form onSubmit={handleSignUp}>
-            <SignupForm
-            setUsername={setUsername}
-            setEmail={setEmail}
-            setPassword={setPassword}
-            setPasswordConfirmation={setPasswordConfirmation}
-            handleSignUp={handleSignUp}
-            handleToClose={handleToClose}
-            />
-            <Button type="submit" color="primary" autoFocus>
-              Submit
-            </Button>
-            <Button onClick={handleToClose} color="secondary" autoFocus>
-              Close
-            </Button>
-          </Form>
-        </DialogContent>
-      </Dialog>
-    </>
+      </DialogActions>
+    </Dialog>
+  </div>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    // <>
+    //   <Button variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>
+    //     Signup
+    //   </Button>
+    //   <Dialog open={open} onClose={handleToClose} onSubmit={handleSignup}>
+    //     <DialogTitle>{"Sign Up"}</DialogTitle>
+    //     <DialogContent>
+    //       <Form onSubmit={handleSignup}>
+    //         <SignupForm
+    //         setUsername={setUsername}
+    //         setEmail={setEmail}
+    //         setPassword={setPassword}
+    //         setPasswordConfirmation={setPasswordConfirmation}
+    //         handleSignup={handleSignup}
+    //         handleToClose={handleToClose}
+    //         />
+    //         <Button type="submit" color="primary" autoFocus>
+    //           Submit
+    //         </Button>
+    //         <Button onClick={handleToClose} color="secondary" autoFocus>
+    //           Close
+    //         </Button>
+    //       </Form>
+    //     </DialogContent>
+    //   </Dialog>
+    // </>
   )
 }
 export default Signup

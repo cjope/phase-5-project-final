@@ -1,21 +1,23 @@
 class Item < ApplicationRecord
 
     belongs_to :category
-    has_many :user_items
+    has_many :user_items, dependent: :destroy, dependent: :delete_all
     has_many :users, through: :user_items
 
     def timeframe
         t = self.ext_type
-        e = self.extension.to_s
+        e = self.extension
+        m = ""
         if t == 1
-            e + " day".pluralize(e)
+            m = "day".pluralize(e)
         elsif t == 2
-            e + " week".pluralize(e)
+            m = "week".pluralize(e)
         elsif t == 3
-            e + " month".pluralize(e)
+            m = "month".pluralize(e)
         elsif t == 4
-            e + " year".pluralize(e)
+            m = "year".pluralize(e)
         end  
+        e.to_s + " " + m
     end
 
     def storage_type
