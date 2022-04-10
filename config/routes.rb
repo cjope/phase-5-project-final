@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   put "/update", to: "users#update"
   post "/create-item", to: "items#create"
   get "/user_items", to: "user_items#index"
-  delete "/delete_item/:id", to: "user_items#destroy"
+  delete "/delete_item/:id", to: "items#destroy"
   get "/test", to: "user_items#test"
 
 

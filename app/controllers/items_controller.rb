@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
 
     def destroy
         item = Item.find(params[:id])
-        item.destroy!
+        item.destroy
         head :no_content
     end
 
