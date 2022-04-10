@@ -1,16 +1,28 @@
-import { Paper } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Accordion, Paper, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
+import { useState } from "react";
 
 function Home({categories}) {
+  const [expanded, setExpanded] = useState(false)
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false)
+  }  
 
   const listCategories = categories.map(category => (
-    <div key={category.id}>
-      <Paper sx={{m:2, width:200, fontSize:30}}>{category.name}</Paper>
+    <Accordion expanded={expanded === `panel${category.id}`} onChange={handleChange(`panel${category.id}`)}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+        <Typography sx={{ margin: "auto"}}>
+          {category.name}
+        </Typography>
+      </AccordionSummary>
       {category.items.map(item=>(
-        <div key={item.id}>
-          <Paper sx={{m:2, width:150, fontSize:20}}>{item.name}</Paper>
-        </div>
+        <AccordionDetails key={item.id}>
+          {item.name}
+        </AccordionDetails>
       ))}
-    </div>
+      <Paper>{categories.items}</Paper>
+    </Accordion>
   ))
 
   return (

@@ -2,11 +2,13 @@ import React from "react"
 import { Button, DialogTitle, Dialog, DialogContent, DialogActions, TextField, FormControl, Stack } from "@mui/material"
 import { useState } from "react"
 import { Flip, toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 function Login({ setUser, setError }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const navigate = useNavigate()
 
   const handleClickToOpen = () => {
     setOpen(true)
@@ -14,8 +16,10 @@ function Login({ setUser, setError }) {
 
   const handleToClose = () => {
     setOpen(false)
-    setUsername("")
-    setPassword("")
+    navigate(-1)
+    // setUsername("")
+    // setPassword("")
+    
   }
 
   function handleLogin(e) {
@@ -44,47 +48,56 @@ function Login({ setUser, setError }) {
   }
 
   return (
-          <div style={{marginInline:5}}>
-      <Button title="Login Existing User" variant="outlined" style={{backgroundColor:"white"}} onClick={handleClickToOpen}>Login</Button>
+    <>
       <Dialog open={open} onClose={handleToClose} onSubmit={handleLogin}>
         <DialogTitle>{"Please Log In"}</DialogTitle>
-        <DialogContent>
-      <Stack>
-        <FormControl sx={{m: 2 }}>
-          <TextField 
-            required
-            variant="outlined"
-            label= "Username"
-            name= "username"
-            onChange={e=>setUsername(e.target.value)}
-          />
-        </FormControl>
+          <DialogContent>
+            <Stack>
 
-        <FormControl sx={{m: 2 }}>
-          <TextField 
-            required
+              <FormControl sx={{m: 2 }}>
+                <TextField 
+                  tabIndex={0}
+                  required
+                  autoFocus
+                  type="text"
+                  variant="outlined"
+                  label= "Username"
+                  name= "username"
+                  onChange={e=>setUsername(e.target.value)}
+                />
+              </FormControl>
+
+              <FormControl sx={{m: 2 }}>
+                <TextField 
+                  tabIndex={1}
+                  required
+                  variant="outlined"
+                  label= "Password"
+                  name= "password"
+                  type="password"
+                  onChange={e=>setPassword(e.target.value)}
+                />
+              </FormControl>
+            </Stack>   
+          </DialogContent>
+
+        <DialogActions sx={{display:"flex", justifyContent:"space-around"}}>
+          <Button
+            onClick={handleLogin}
             variant="outlined"
-            label= "Password"
-            name= "password"
-            type="password"
-            onChange={e=>setPassword(e.target.value)}
-          />
-        </FormControl>
-      </Stack>   
-      </DialogContent>
-      <DialogActions sx={{display:"flex", justifyContent:"space-around"}}>
-        <Button onClick={handleToClose} variant="outlined" color="warning" autoFocus>Close</Button>
-        <Button
-          onClick={handleLogin}
-          variant="outlined"
-          color="success"
-          autoFocus
-          primary="true"
-        >OK
+            color="success"
+            primary="true"
+            type="submit"
+          >
+            OK
+          </Button>
+
+        <Button onClick={handleToClose} variant="outlined" color="warning">
+          Close
         </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   )
 }
 export default Login
