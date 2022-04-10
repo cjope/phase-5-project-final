@@ -10,9 +10,9 @@ function Home({categories}) {
   }  
 
   const listCategories = categories.map(category => (
-    <Accordion expanded={expanded === `panel${category.id}`} onChange={handleChange(`panel${category.id}`)}>
+    <Accordion key={category.id} expanded={expanded === `panel${category.id}`} sx={{margin:0}} onChange={handleChange(`panel${category.id}`)}>
       <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-        <Typography sx={{ margin: "auto"}}>
+        <Typography sx={{ margin:0, fontWeight:"bolder"}}>
           {category.name}
         </Typography>
       </AccordionSummary>

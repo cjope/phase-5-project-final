@@ -33,7 +33,7 @@ function App() {
     fetch("/me")
     .then(r => r.json())
     .then(user => setUser(user))
-  },[])
+  },[setUser])
 
   useEffect(() => {
     fetch("/items")
@@ -76,7 +76,7 @@ function App() {
         <Route path="/item-detail" element={<ItemDetail item={selectedItem}/>}/>
         <Route path="/user" element={<User user={user} />}/>
         <Route path="/signup-form" element={<SignupForm/>}/>
-        <Route path="/logout" element={<Logout setUser={setUser}/>}/>
+        <Route path="/logout" element={<Logout setUser={setUser} user={user}/>}/>
         <Route path="/usda" element={<Usda/>}/>
       </Routes>
     </>

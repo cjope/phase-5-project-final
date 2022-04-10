@@ -16,10 +16,7 @@ function Login({ setUser, setError }) {
 
   const handleToClose = () => {
     setOpen(false)
-    navigate(-1)
-    // setUsername("")
-    // setPassword("")
-    
+    navigate("/")   
   }
 
   function handleLogin(e) {
