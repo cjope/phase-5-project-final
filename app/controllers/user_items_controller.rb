@@ -6,14 +6,22 @@ class UserItemsController < ApplicationController
     end
     
     def create
+      item = UserItem.where(user_id: session[:user_id], item_id: params[:item_id])
       render json: UserItem.create!(user_id: session[:user_id], item_id: params[:item_id])
     end
 
-    def destroy
+    def delete
       user = User.find(session[:user_id])
-      item = user.items.find(params[:item_id])
-      item.delete
+      item = user.user_items.find_by(item_id: params[:item_id])
+      user.user_items.destroy(item.id)
       head :no_content
     end
+
+    # def destroy
+    #   user = User.find(session[:user_id])
+    #   item = user.items.find(params[:item_id])
+    #   item.delete
+    #   head :no_content
+    # end
 
 end

@@ -4,15 +4,11 @@ import { useState } from "react"
 import { Flip, toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 
-function Login({ setUser, setError }) {
+function Login({ setUser }) {
   const [open, setOpen] = useState(true)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
-
-  const handleClickToOpen = () => {
-    setOpen(true)
-  }
 
   const handleToClose = () => {
     setOpen(false)

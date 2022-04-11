@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post "/create-item", to: "items#create"
   get "/user_items", to: "user_items#index"
   delete "/delete_item/:id", to: "items#destroy"
-  get "/test", to: "user_items#test"
+  post "/add_user_item/:id", to: "user_items#create"
+  delete "/delete_user_item/:item_id", to: "user_items#delete"
+
 
 
   post "/login", to: "sessions#create"

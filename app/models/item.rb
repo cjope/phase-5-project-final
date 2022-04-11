@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
 
     belongs_to :category
-    has_many :user_items, dependent: :destroy, dependent: :delete_all
-    has_many :users, through: :user_items
+    has_many :user_items
+    has_many :users, through: :user_items, dependent: :destroy
 
     def timeframe
         t = self.ext_type
