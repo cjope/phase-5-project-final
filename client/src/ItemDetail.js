@@ -1,10 +1,14 @@
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { Button, IconButton, Paper, Stack } from '@mui/material';
+import { Button, Card, IconButton, Paper, Stack } from '@mui/material';
 import { CalendarPicker } from '@mui/lab';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useEffect } from 'react';
 
 const pastDate = new Date().getFullYear()-3
 const futureDate = new Date().getFullYear()+5
@@ -13,9 +17,14 @@ const maxDate = new Date(futureDate, 1, 1)
 
 function ItemDetail({item, user}) {
     const [date, setDate] = useState(new Date())
-    const [clicked, setClicked] = useState(false)
     const _MS_PER_DAY = 1000 * 60 * 60 * 24
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if(!item.id){
+        navigate("/items")
+        }
+    },[item, navigate])
 
     function dateCalc(){
     let day = date.getDate()
@@ -51,7 +60,6 @@ function ItemDetail({item, user}) {
 
     function handleDatePick(e){
         setDate(e)
-        setClicked(true)
     }
 
     function handleDeleteItems(){
@@ -70,34 +78,45 @@ function ItemDetail({item, user}) {
         })
       }
 
-      console.log(item)
-
-
     return (
-        <div style={{display:"flex", flexDirection:"column"}} >
-            <Paper elevation={10} sx={{p:2, width:750, m:"auto", mt:5, textAlign:"center", fontSize:25}}>
-                { clicked & item.id>0 ? `Will expire ${difference} days from today`: "Pick a date"}
-            </Paper>
-            <div style={{textAlign: "center", display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center"}}>
-                <div style={{display:"flex", justifyContent:"space-around", flexDirection:"row", marginTop:20, marginRight: 25}}>
-                    <Stack spacing={6}>
-                        <Paper elevation={10} sx={{p:2, width:340, paddingBottom:6, paddingTop:6 }} style={{fontSize:25}}>
-                            {item.id ? item.name : navigate("/items")}
-                        </Paper>
-                        <Paper elevation={10}>
-                            <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>Item is {item.perishable ? "Perishable":"Shelf Stable"}</Paper>
-                            <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>Storage Type: {item.storage_type}</Paper>
-                        </Paper>
-                        <Paper elevation={10}>
-                            <h3>Expiration Date</h3>
-                            <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>{date.toDateString()}</Paper>
-                        </Paper>
-                    </Stack>
+        <div className='id1' >
+            <div style={{display:"flex", justifyContent:"center"}} >
+                <IconButton onClick={e=>navigate("/items")} ><ArrowBackIcon color="primary"/>Items</IconButton>
+                <div className='id-sum'>
+                    <Paper elevation={10}>Will expire {difference} days from today</Paper>
                 </div>
-                <div style={{display:"flex", justifyContent:"space-around", flexDirection:"row", marginTop:20, marginLeft:20}}>
+                {user?.is_admin ?
+                    <div className='id5'>
+                        <Button disabled>
+                            <EditIcon/>
+                        </Button>
+                        <Button onClick={handleDeleteItems}>
+                            <DeleteIcon/>
+                        </Button>
+                    </div>
+                    :
+                    <IconButton onClick={handleAddItem}>
+                        Add <FavoriteIcon color='primary'/>
+                    </IconButton>
+                }
+            </div>
+
+            <div className='id2'>
+                <div className="id-info">
+                    <Paper elevation={10}>{item.name}</Paper>
+                    <Card elevation={10} sx={{p:2}}>
+                        <Paper elevation={10} >Item is {item.perishable ? "Perishable":"Shelf Stable"}</Paper>
+                        <Paper elevation={10} >Storage Type: {item.storage_type}</Paper>
+                    </Card>
+                    <Card elevation={10}>
+                        <h3>Expiration Date</h3>
+                        <Paper elevation={10}>{date.toDateString()}</Paper>
+                    </Card>
+                </div>
+                
+                <div className='id-info'>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <Stack spacing={6}>
-                            <Paper xs={12} md={6} elevation={10} sx={{borderRadius:5 }}>
+                            <Paper xs={12} md={6} elevation={10}>
                                 <CalendarPicker 
                                 date={date}
                                 minDate={minDate}
@@ -109,16 +128,9 @@ function ItemDetail({item, user}) {
                                 <h3>Can be Extended {item.timeframe} to:</h3>
                                 <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>{dateCalc()}</Paper>
                             </Paper>
-                        </Stack>
                     </LocalizationProvider>
                 </div>
             </div>
-            {user?.is_admin ? <div style={{display:"flex", justifyContent:"center"}}>
-                <Button variant="outlined">Update Item</Button>
-                <Button variant="outlined" onClick={handleDeleteItems}>Delete Item</Button>
-            </div>:<div><IconButton onClick={handleAddItem}>Add<FavoriteIcon color='primary' ></FavoriteIcon></IconButton> </div>
-}
-
         </div>
     )
 }

@@ -10,9 +10,13 @@ function Home({categories}) {
   }  
 
   const listCategories = categories.map(category => (
-    <Accordion key={category.id} expanded={expanded === `panel${category.id}`} sx={{margin:0}} onChange={handleChange(`panel${category.id}`)}>
+    <Accordion
+      key={category.id}
+      expanded={expanded === `panel${category.id}`}
+      onChange={handleChange(`panel${category.id}`)}
+    >
       <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-        <Typography sx={{ margin:0, fontWeight:"bolder"}}>
+        <Typography>
           {category.name}
         </Typography>
       </AccordionSummary>
@@ -26,7 +30,7 @@ function Home({categories}) {
   ))
 
   return (
-    <div>
+    <div className="home">
       {listCategories}
     </div>
   )

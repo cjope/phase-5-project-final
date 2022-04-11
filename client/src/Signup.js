@@ -47,7 +47,7 @@ function Signup({ setUser }) {
   }
 
   return (
-    <div style={{alignItems:"center", display:"flex", flexDirection:"column"}}>
+    <div className="su1">
       <Dialog open={open} onClose={handleToClose} onSubmit={handleSignup}>
         <DialogTitle>{"Sign Up"}</DialogTitle>
         <DialogContent>
@@ -98,7 +98,7 @@ function Signup({ setUser }) {
           </Stack>
         </DialogContent>
         
-        <div style={{display:"flex", justifyContent:"space-around"}}>
+        <div className="su2">
           <Button
             sx={{m:2}}
             variant="outlined"

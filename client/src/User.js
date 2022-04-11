@@ -1,9 +1,9 @@
 function User({user}) {
 
     return (
-      <div className="user">
+      <div>
         {user ?
-          <div style={{display: "flex"}} >
+          <div>
             <div>
               <p>Username: {user.username}</p>
               <p>Email: {user.email}</p>

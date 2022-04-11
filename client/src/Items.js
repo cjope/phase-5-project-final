@@ -45,14 +45,12 @@ function Items({items, setSelectedItem, user}) {
             <ListItem>
               <Paper 
                 elevation={10}
-                sx={{p:2, width:300}}
-                style={{fontSize:25, cursor: "pointer"}}
+                sx={{p:2, width:300, fontSize:25, cursor: "pointer"}}
                 onClick={e=>handleViewItem(item)}
               >{item.name}
               </Paper>
               
               <Button
-                // sx={{p:2, m:1, fontSize:25, cursor: "pointer"}}
                 name={like}
                 value={item.id}
                 onClick={e=>handleLikeItem(e.target)}
@@ -68,7 +66,7 @@ function Items({items, setSelectedItem, user}) {
   })
 
   return (
-      <div style={{textAlign: "center", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+      <div className='i1'>
         {listAllItems}
     </div>
   )

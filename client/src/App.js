@@ -2,21 +2,22 @@ import React, { useState, useEffect } from "react"
 import { Route, Routes, useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import {Button} from "@mui/material"
+
 import "./App.css"
 import CreateItem from "./CreateItem"
 import EditUser from "./EditUser"
 import Home from "./Home"
+import ItemDetail from "./ItemDetail"
 import Items from "./Items"
+import JulianCalendar from "./JulianCalendar"
 import Login from "./Login"
 import Logout from "./Logout"
 import MenuBar from "./MenuBar"
 import Signup from "./Signup"
 import SignupForm from "./SignupForm"
-import User from "./User"
-import ItemDetail from "./ItemDetail"
 import Usda from "./Usda"
-import {Button} from "@mui/material"
-import JulianCalendar from "./JulianCalendar"
+import User from "./User"
 
 
 function App() {
@@ -25,10 +26,8 @@ function App() {
   const [error, setError] = useState(null)
   const [selectedItem, setSelectedItem] = useState([])
   const [filteredItems, setFilteredItems] = useState("")
-  const navigate = useNavigate()
   const [categories, setCategories] = useState([])
-  
-
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("/me")
@@ -56,11 +55,13 @@ function App() {
 
   const listFilteredItem = items?.filter(item => item.name.toLowerCase().trim().includes(filteredItems.toLowerCase().trim())).map(item=> {
     return(
-    <div key={item.id} style={{maxWidth:200, marginRight:100, marginLeft:"auto", textAlign:"right"}}>
-      <Button variant="outlined" sx={{marginRight:2, marginTop:5}} value={item.name} onClick={e=>handleItemNav(item)} >{item.name}</Button>
-    </div>
-  )
-})
+      <div key={item.id} className="f-list">
+        <Button variant="outlined" value={item.name} onClick={e=>handleItemNav(item)}>
+          {item.name}
+        </Button>
+      </div>
+    )
+  })
 
   return (
     <>
@@ -74,7 +75,7 @@ function App() {
         <Route path="/edit-user" element={<EditUser user={user} setUser={setUser}/>}/>
         <Route path="/items" element={<Items items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem} user={user}/>}/>
         <Route path="/create-item" element={<CreateItem categories={categories}/>}/>
-        <Route path="/item-detail" element={<ItemDetail item={selectedItem}/>}/>
+        <Route path="/item-detail" element={<ItemDetail item={selectedItem} user={user}/>}/>
         <Route path="/user" element={<User user={user} />}/>
         <Route path="/signup-form" element={<SignupForm/>}/>
         <Route path="/logout" element={<Logout setUser={setUser} user={user}/>}/>

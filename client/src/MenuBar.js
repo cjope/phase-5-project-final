@@ -54,14 +54,14 @@ function Menubar({setFilteredItems, user}) {
     <div onClick={handleMenuClose} >
        {user ?
        <>
-       <p style={{textAlign:"center", height:2, marginBottom:20, marginTop:0}}>{user.username}</p>
-        <div style={{display:"flex", flexDirection:"row"}}>
+       <p className='mb1'>{user.username}</p>
+        <div className='mb2'>
           <Link href="/edit-user" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Edit User</Button></Link>
           <Link href="/logout" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Logout</Button></Link>
         </div>
         </>
         :
-        <div style={{display:"flex", flexDirection:"row"}}>
+        <div className='mb2'>
          <Link href="/login" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Login</Button></Link>
          <Link href="/signup" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Signup</Button></Link>
         </div>
@@ -78,8 +78,8 @@ const renderMenu = (
     open={isMenuOpen}
     onClose={handleMenuClose}
   >
-    <div onClick={handleMenuClose} style={{marginInlineEnd:8}} >
-      <div style={{display:"flex", flexDirection:"row"}}>
+    <div onClick={handleMenuClose} className="mb3">
+      <div className='mb2'>
         <Link href="/julian" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Julian Calc</Button></Link>
         <Link href="/usda" underline="none"><Button variant="outlined" sx={{marginInline:1}}>USDA</Button></Link>
         <Link href="/items" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Items</Button></Link>
@@ -107,14 +107,14 @@ const renderMenu = (
               <Box sx={{ flexGrow: 1 }}/>
             </IconButton>
 
-            <div style={{width:195}}></div>
+            <div className='mb4'></div>
             <Box sx={{ flexGrow: 1 }}/>
             <Box sx={{ display: { xs: 'flex', md: 'flex'}}}/>
 
               <h2>Fresh</h2>
 
               <IconButton onClick={e=>{navigate("/")}}>
-                <img src="orange-timer.png" alt="orange" style={{width:"40px"}}/>
+                <img src="orange-timer.png" alt="orange" className='mb5'/>
               </IconButton>
 
               <h2>Extend</h2>

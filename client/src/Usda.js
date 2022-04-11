@@ -40,19 +40,25 @@ function Usda(){
     const displayUsda = usda?.foods.map(food=>(
         <Grid key={food.fdcId} item xs={3}>
         <Item>
-          <h2 style={{textAlign:"center"}}>{food.description}</h2>
+          <h2 className="us1">{food.description}</h2>
           <div>
-          <p><strong>Category</strong>: {food.foodCategory}</p>
-          <Button key={food.fdcId} size="small" variant="outlined" onClick={handleClickToOpen} color="primary" autoFocus>Nutritional Facts</Button>
+            <p><strong>Category</strong>: {food.foodCategory}</p>
+            <Button key={food.fdcId} size="small" variant="outlined" onClick={handleClickToOpen} color="primary" autoFocus>
+                Nutritional Facts
+            </Button>
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Nutritional Facts"}</DialogTitle>
                 <DialogContent>
                     {food.foodNutrients.map(nut=>(
-                        <div key={nut.nutrientId}><p><strong>{nut.nutrientName}</strong>: {nut.nutrientNumber} {nut.unitName}</p></div>
+                        <div key={nut.nutrientId}>
+                            <p><strong>{nut.nutrientName}</strong>: {nut.nutrientNumber} {nut.unitName}</p>
+                        </div>
                     ))}
                 </DialogContent>
                 <DialogActions sx={{justifyContent:"center"}}>
-                    <Button onClick={handleToClose} variant="outlined" color="primary" autoFocus>Close</Button>
+                    <Button onClick={handleToClose} variant="outlined" color="primary" autoFocus>
+                        Close
+                    </Button>
                 </DialogActions>
             </Dialog>
           </div>
@@ -62,8 +68,8 @@ function Usda(){
 
 
     return(
-        <div style={{display:"flex", flexDirection:"column"}}>
-            <Card variant="outlined" sx={{m:5,fontSize:50, textAlign:"center"}}>USDA SEARCH</Card>
+        <div className="us2">
+            <Card variant="outlined" sx={{m:5, fontSize:50, textAlign:"center"}}>USDA SEARCH</Card>
             <TextField id="outlined-search" variant="outlined" sx={{m:2}} label="Search field" type="search" autoSave='false' onChange={handleSearchInput}/>
             <Button variant="outlined" size="large" sx={{p:2, m:2}} onClick={handleUsdaSearch} disabled={disable}>Search</Button>
             <Box sx={{m:2 }}>

@@ -5,6 +5,7 @@ import { AccordionDetails, InputLabel, MenuItem, FormControl, Accordion, Accordi
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { toast, Flip } from "react-toastify"
 import { useNavigate } from "react-router-dom"
+import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 function CreateItem({categories}){
   const [name, setName] = useState("")
@@ -61,10 +62,10 @@ function CreateItem({categories}){
   }
 
   return(
-    <div className="create-item">
-      <Form onSubmit={handleSubmit} style={{width:600}}>
+    <div className="ci">
+      <Form onSubmit={handleSubmit}>
 
-        <FormControl sx={{m: 2 }}>
+        <FormControl>
           <TextField 
             required
             variant="outlined"
@@ -74,18 +75,7 @@ function CreateItem({categories}){
           />
         </FormControl>
 
-        <FormControl sx={{m: 2 }}>
-          <TextField 
-            required
-            variant="outlined"
-            label= "Extension"
-            name= "extension"
-            type="number"
-            onChange={e=>setExtension(e.target.value)}
-          />
-        </FormControl>
-
-        <FormControl sx={{m: 2 }}>
+        <FormControl>
           <InputLabel id="categories">Categories</InputLabel>
             <Select
               id="category"
@@ -105,7 +95,20 @@ function CreateItem({categories}){
             </Select>
         </FormControl>
 
-        <FormGroup sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", m:2}}>
+        <FormControl>
+          <TextField 
+            required
+            variant="outlined"
+            label= "Extension"
+            name= "extension"
+            type="number"
+            onChange={e=>setExtension(e.target.value)}
+          />
+        </FormControl>
+
+
+
+        <FormGroup>
           <FormControl>
             <FormLabel id="ext_type"/>
             <RadioGroup row name="ext_type" onChange={e=>setExtType(e.target.value)} >
@@ -133,25 +136,27 @@ function CreateItem({categories}){
                   checked={perishable}
                   onChange={handlePerishableChange}
                   position="left"
+                  icon={<AcUnitIcon/>}
+                  checkedIcon={<AcUnitIcon/>}
                 />}
               />
             </FormControl>
           </FormGroup>
         
-        <FormControl sx={{m:2}}>
+        <FormControl>
           <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
             <AccordionSummary 
               expandIcon={<ExpandMoreIcon/>}
               aria-controls="panel1bh-content"
               id="panel1bh-header"
             >
-              {emoji? <img style={{margin:"auto"}} src={emoji} alt="emoji"/> :
-              <Typography sx={{ margin: "auto"}}>
+              {emoji? <img src={emoji} alt="emoji"/> :
+              <Typography>
                 Choose an Emoji
               </Typography>}
             </AccordionSummary>
             <AccordionDetails>
-              {emoji? <img style={{margin:"auto"}} src={emoji} alt="emoji"/> : <></>}
+              {emoji? <img src={emoji} alt="emoji"/> : <></>}
               <EmojiPicker
                 disableSkinTonePicker={true}
                 onEmojiClick={handleEmoji}

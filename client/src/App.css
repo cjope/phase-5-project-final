@@ -13,42 +13,15 @@ body {
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
   text-align: center;
-  /* border: solid 2px rgb(25, 118, 210) !important; */
 }
 
-/* 
-.nav {
-  background-color: rgb(248, 133, 133);
-}
 
-.menu {
-  background-color: #75dcf8;
-}
-
- */
-
-.create-item {
-  margin-top:2%;
-  display: flex;
-  justify-content: center;
-}
 
 Form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* background-color: rgb(133, 248, 181); */
 }
-
-/* emoji picker */
-/* .css-1elwnq4-MuiPaper-root-MuiAccordion-root:last-of-type:focus-within { */
-/* background-color: rgb(211, 136, 255); */
-/* border: solid 2px rgb(25, 118, 210); */
-/* } */
-
-/* nav.emoji-categories {
-  display: none !important;
-} */
 
 /* category name */
 .emoji-picker-react .emoji-group:before {
@@ -79,8 +52,8 @@ aside.emoji-picker-react {
 }
 
 .emoji-categories button {
-  height: 50px !important;
-  width: 50px !important;
+  height: 25px !important;
+  width: 25px !important;
   background-size: unset !important;
   z-index: 3 !important;
   margin: 15px !important;
@@ -102,6 +75,19 @@ aside.emoji-picker-react {
 aside.emoji-picker-react ::-webkit-scrollbar {
   display: none !important;
 }
+
+.MuiSwitch-root{
+  width: 50px;
+  height: 42px !important;
+  justify-content: center;
+}
+
+.MuiSwitch-track{
+  opacity: .1 !important;
+}
+
+
+
 
 .menu {
   display: flex;
@@ -144,29 +130,11 @@ aside.emoji-picker-react ::-webkit-scrollbar {
   }
 }
 
-
-.profile-pic {
-  /* width: 50px;
-  height: 50px; */
-  border-radius: 50%;
-  /* margin-inline: 2%; */
-  /* border: 1px solid black; */
-  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
-    0 0 0 2px rgb(255, 255, 255),
-    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-}
-
 .nav {
   display: flex;
-  /* flex-direction: row; */
-  /* justify-content: space-around; */
   align-items: center;
-  /* margin-top: 1%; */
-  /* flex-wrap: nowrap; */
-  /* width: 100%; */
   padding-inline: 2%;
 }
-
 
 .user {
   display: flex;
@@ -177,16 +145,8 @@ aside.emoji-picker-react ::-webkit-scrollbar {
 
 .nav p {
   width: 200px;
-  /* text-align: end; */
   margin-right: 5%;
 }
-
-
-
-
-/* .nav h1 {
-  width: 45%;
-} */
 
 .nav img {
   width: 50px;
@@ -195,12 +155,289 @@ aside.emoji-picker-react ::-webkit-scrollbar {
 }
 
 
+
+
+/* App */
+.f-list{
+  text-align: right;
+}
+
+.f-list Button{
+  min-width:200px;
+  margin: 5px;
+}
+
+/* CreateItem */
+
+.ci{
+  display: flex;
+  justify-content: center;
+}
+.ci Form{
+  width: 600px;
+}
+
+.ci .MuiFormControl-root{
+  margin:2px;
+}
+
+.ci .MuiFormGroup-root{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:2px;
+}
+
+
+.ci img{
+  margin:auto;
+}
+ .ci .MuiTypography-root{
+  margin:auto;
+}
+
+
+
+/* EditUser */
+.eu{
+  margin-inline: 5;
+}
+.eu Button{
+  background-color: white;
+}
+
+/* Home */
+
+mui.home Accordion{
+  color: blue;
+}
+
+.home .MuiTypography-root{
+  font-weight: bold;
+}
+
+.home Typography{
+  color:blue !important;
+}
+
+/* ItemDetail */
+.id1{
+  display:flex;
+  flex-direction: column;
+}
+
+.id2{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+.id3{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-right: 25px;
+}
+
+.id4{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.id5{
+  display: flex;
+  justify-content: center;
+}
+
+
+.id-sum .MuiPaper-root{
+  padding:2px;
+  width:450px;
+  margin:auto;
+  /* margin-top:5px; */
+  text-align:center;
+  font-size:25px;
+  padding-bottom:20px;
+  padding-top:20px;
+  margin-inline: 20px;
+}
+
+.id-name .MuiPaper-root{
+  width:364px;
+  padding-bottom:50px;
+  padding-top:50px;
+  font-size:25px;
+}
+
+.id-info{
+  width: 364px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-inline:10px;
+}
+
+.id-info .MuiPaper-root{
+  font-size: 20px;
+  margin-block: 15px;
+  padding: 10px;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+
+
+
+
+
 /* 
-div.MuiFormControl-root.MuiTextField-root {
-  border: solid red;
+
+
+.id2 .MuiPaper-root{
+  padding: 2px;
+  width: 300px;
+  margin:2px;
+  font-size: 25px;
+}
+
+.id-name .MuiPaper-root{
+  padding: 2px;
+  width: 340px;
+  padding-bottom: 6px;
+  padding-top: 6px;
+}
+
+/* Paper{
+  border-radius:5
+ } */
+
+ /* Paper{
+   padding: 2;
+   width: 300;
+   margin: 2;
+   font-size: 25;
+ } */
+
+ 
+
+
+
+
+ /* Items */
+ /* Paper{
+   padding: 2;
+   width: 300;
+   font-size: 25;
+   cursor: pointer;
+ } */
+
+ .i1{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+ }
+
+ /* Login */
+ /* FormControl{
+   margin: 2;
+ } */
+ /* DialogActions{
+   display: flex;
+   justify-content: space-around;
+ } */
+ 
+ /* MenuBar */
+ .mb1{
+   text-align: center;
+   height: 2px;
+   margin-bottom: 20px;
+   margin-top: 0;
+ }
+ .mb2{
+   display: flex;
+   flex-direction: row;
+ }
+ /* Button{
+   margin-inline: 1;
+ } */
+.mb3{
+  margin-inline-end: 8px;
+}
+/* Box{
+  flex-grow: 1;
 } */
-/* 
-.date :hover :only-child {
-  border: 1px solid rgba(0, 0, 0, 0.87);
-  border-radius: 4px;
+/* IconButton{
+  margin-right: 2;
+} */
+/* MenuIcon{
+  flex-grow: 1;
+} */
+.mb4{
+  width: 195px;
+}
+/* Box{
+  display: {xs: flex, md: flex};
+} */
+.mb5{
+  width: 40px;
+}
+/* Box{
+  display: {xs: flex, md: none};
+} */
+
+/* SignUp */
+.su1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+/* FormControl{
+  margin: 2;
+} */
+.su2{
+  display: flex;
+  justify-content: space-around;
+}
+/* Button{
+  margin: 2;
+} */
+
+/* SignupForm */
+
+
+/* USDA */
+
+.us1{
+  text-align: center;
+}
+/* DialogActions{
+  justify-content: center;
+} */
+.us2{
+  display: flex;
+  flex-direction: column;
+}
+/* Card{
+  margin: 5;
+  font-size: 50;
+  text-align: center;
+} */
+/* TextField{
+  margin:2;
+} */
+/* Button{
+  padding:2;
+  margin:2;
+} */
+/* Box{
+  margin: 2;
 } */
