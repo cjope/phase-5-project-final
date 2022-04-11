@@ -16,6 +16,7 @@ import User from "./User"
 import ItemDetail from "./ItemDetail"
 import Usda from "./Usda"
 import {Button} from "@mui/material"
+import JulianCalendar from "./JulianCalendar"
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
         <Route path="/signup-form" element={<SignupForm/>}/>
         <Route path="/logout" element={<Logout setUser={setUser} user={user}/>}/>
         <Route path="/usda" element={<Usda/>}/>
+        <Route path="/julian" element={<JulianCalendar/>}/>
       </Routes>
     </>
   )

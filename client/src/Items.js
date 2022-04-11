@@ -7,7 +7,7 @@ function Items({items, setSelectedItem, user}) {
 
   function handleViewItem(item){
       setSelectedItem(item)
-    // navigate("/item-detail")
+    navigate("/item-detail")
   }
 
   function handleLikeItem(e){

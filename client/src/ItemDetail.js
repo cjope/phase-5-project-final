@@ -5,7 +5,6 @@ import { CalendarPicker } from '@mui/lab';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import addDays from 'date-fns/addDays';
 
 const pastDate = new Date().getFullYear()-3
 const futureDate = new Date().getFullYear()+5
@@ -61,15 +60,6 @@ function ItemDetail({item, user}) {
         })
       }
 
-      const [julianDate, setJulianDate] = useState()
-      const [julianDay, setJulianDay] =useState(1)
-      
-      function handleJulianDate(e){
-        const day = Array(julianDay[2]+julianDay[3]+julianDay[4])
-        const year = new Date(20+julianDay[0]+julianDay[1], 0)
-        setJulianDate(new Date(year.setDate(day)).toLocaleDateString())
-      }
-  
       function handleAddItem(e){
         fetch(`/add_user_item/${item.id}`, {
             method: "POST",
@@ -80,12 +70,11 @@ function ItemDetail({item, user}) {
         })
       }
 
+      console.log(item)
+
 
     return (
         <div style={{display:"flex", flexDirection:"column"}} >
-            <input onChange={e=>setJulianDay(e.target.value)}></input>
-            <button onClick={e=>handleJulianDate(e.target.value)}>Submit</button>
-            <h1>Calendar Date is: {julianDate}</h1>
             <Paper elevation={10} sx={{p:2, width:750, m:"auto", mt:5, textAlign:"center", fontSize:25}}>
                 { clicked & item.id>0 ? `Will expire ${difference} days from today`: "Pick a date"}
             </Paper>
@@ -127,7 +116,7 @@ function ItemDetail({item, user}) {
             {user?.is_admin ? <div style={{display:"flex", justifyContent:"center"}}>
                 <Button variant="outlined">Update Item</Button>
                 <Button variant="outlined" onClick={handleDeleteItems}>Delete Item</Button>
-            </div>:<div><IconButton onClick={handleAddItem}>Add<FavoriteIcon></FavoriteIcon></IconButton> </div>
+            </div>:<div><IconButton onClick={handleAddItem}>Add<FavoriteIcon color='primary' ></FavoriteIcon></IconButton> </div>
 }
 
         </div>

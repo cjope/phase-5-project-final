@@ -80,6 +80,7 @@ const renderMenu = (
   >
     <div onClick={handleMenuClose} style={{marginInlineEnd:8}} >
       <div style={{display:"flex", flexDirection:"row"}}>
+        <Link href="/julian" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Julian Calc</Button></Link>
         <Link href="/usda" underline="none"><Button variant="outlined" sx={{marginInline:1}}>USDA</Button></Link>
         <Link href="/items" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Items</Button></Link>
         {user?.is_admin === true ? <Link href="/create-item" underline="none"><Button variant="outlined" sx={{marginInline:1}}>Create Item</Button></Link>:<></>}
