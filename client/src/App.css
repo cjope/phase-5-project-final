@@ -258,7 +258,6 @@ mui.home Accordion{
   padding:2px;
   width:450px;
   margin:auto;
-  /* margin-top:5px; */
   text-align:center;
   font-size:25px;
   padding-bottom:20px;
@@ -331,12 +330,11 @@ mui.home Accordion{
 
 
  /* Items */
- /* Paper{
-   padding: 2;
-   width: 300;
-   font-size: 25;
-   cursor: pointer;
- } */
+ .i1 .MuiPaper-root{
+   padding: 2px;
+   width: 300px;
+   font-size: 25px;
+ }
 
  .i1{
    display: flex;

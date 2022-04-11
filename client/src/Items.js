@@ -1,6 +1,7 @@
-import { ListItem, Grid, Stack, Paper, Card, Button } from '@mui/material';
+import { ListItem, Grid, Stack, Paper, Card, Button, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Items({items, setSelectedItem, user}) {
   const navigate = useNavigate()
@@ -12,9 +13,10 @@ function Items({items, setSelectedItem, user}) {
 
   function handleLikeItem(e){
     let id = e.value
-    let liked = e.name
-    liked === "♡" ? addItem(id) : deleteItem(id)
-    navigate(0)
+    let like = e.name
+    console.log(like==="none")
+    like === "none" ? addItem(id) : deleteItem(id)
+    // navigate(0)
   }
 
   function addItem(id){
@@ -25,38 +27,43 @@ function Items({items, setSelectedItem, user}) {
         },
         body: JSON.stringify({ item_id: id }),
     })
+    navigate(0)
   }
 
   function deleteItem(id){
     fetch(`/delete_user_item/${id}`, {
       method: "DELETE",
     })
+    navigate(0)
   }
 
   const listAllItems = items?.map(item => {
-    let like = ""
+    let like = null
     let liked = user?.items?.filter(i=>i.id === item.id)
-    liked?.length>0 ? like = "♥" : like = "♡"
+    liked?.length>0 ? like = "warning" : like = "none"
  
     return(
       <div key={item.id}>
         <Grid>
           <Stack spacing={2}>
             <ListItem>
+              <Button onClick={e=>handleViewItem(item)}
+              >
               <Paper 
                 elevation={10}
-                sx={{p:2, width:300, fontSize:25, cursor: "pointer"}}
-                onClick={e=>handleViewItem(item)}
+                sx={{p:2, width:300, fontSize:25}}
               >{item.name}
               </Paper>
+              </Button>
               
-              <Button
+              <IconButton
                 name={like}
                 value={item.id}
-                onClick={e=>handleLikeItem(e.target)}
+                onClick={e=>handleLikeItem(e.currentTarget)}
               >
-                {like}
-              </Button>
+              <FavoriteIcon color={like} ></FavoriteIcon>
+              </IconButton>
+
             </ListItem>
 
           </Stack>

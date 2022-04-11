@@ -83,7 +83,7 @@ function ItemDetail({item, user}) {
             <div style={{display:"flex", justifyContent:"center"}} >
                 <IconButton onClick={e=>navigate("/items")} ><ArrowBackIcon color="primary"/>Items</IconButton>
                 <div className='id-sum'>
-                    <Paper elevation={10}>Will expire {difference} days from today</Paper>
+                    <Paper elevation={20}>Will expire {difference} days from today</Paper>
                 </div>
                 {user?.is_admin ?
                     <div className='id5'>
@@ -104,7 +104,7 @@ function ItemDetail({item, user}) {
             <div className='id2'>
                 <div className="id-info">
                     <Paper elevation={10}>{item.name}</Paper>
-                    <Card elevation={10} sx={{p:2}}>
+                    <Card elevation={10}>
                         <Paper elevation={10} >Item is {item.perishable ? "Perishable":"Shelf Stable"}</Paper>
                         <Paper elevation={10} >Storage Type: {item.storage_type}</Paper>
                     </Card>
@@ -126,7 +126,7 @@ function ItemDetail({item, user}) {
                             </Paper>
                             <Paper elevation={10}>
                                 <h3>Can be Extended {item.timeframe} to:</h3>
-                                <Paper elevation={10} sx={{p:2, width:300, m:2, fontSize:25}}>{dateCalc()}</Paper>
+                                <Paper elevation={10}>{dateCalc()}</Paper>
                             </Paper>
                     </LocalizationProvider>
                 </div>
