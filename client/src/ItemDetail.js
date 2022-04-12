@@ -80,7 +80,7 @@ function ItemDetail({item, user}) {
 
     return (
         <div className='id1' >
-            <div style={{display:"flex", justifyContent:"center"}} >
+            <div className="id-header" >
                 <IconButton onClick={e=>navigate("/items")} ><ArrowBackIcon color="primary"/>Items</IconButton>
                 <div className='id-sum'>
                     <Paper elevation={20}>Will expire {difference} days from today</Paper>

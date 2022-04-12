@@ -73,7 +73,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login user={user} setUser={setUser} error={error} setError={setError}/>}/>
         <Route path="/edit-user" element={<EditUser user={user} setUser={setUser}/>}/>
-        <Route path="/items" element={<Items items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem} user={user}/>}/>
+        <Route path="/items" element={<Items items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem} user={user} categories={categories}/>}/>
         <Route path="/create-item" element={<CreateItem categories={categories}/>}/>
         <Route path="/item-detail" element={<ItemDetail item={selectedItem} user={user}/>}/>
         <Route path="/user" element={<User user={user} />}/>

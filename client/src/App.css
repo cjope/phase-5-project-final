@@ -324,15 +324,16 @@ mui.home Accordion{
    font-size: 25;
  } */
 
- 
 
-
-
+ .id-header{
+   display: flex;
+   justify-content: center;
+ }
 
  /* Items */
  .i1 .MuiPaper-root{
    padding: 2px;
-   width: 300px;
+   width: 600px;
    font-size: 25px;
  }
 
@@ -360,16 +361,27 @@ mui.home Accordion{
    margin-bottom: 20px;
    margin-top: 0;
  }
+
+
  .mb2{
    display: flex;
    flex-direction: row;
  }
- /* Button{
-   margin-inline: 1;
- } */
+ .mb2 Button{
+   margin-inline: 2px;
+ }
 .mb3{
   margin-inline-end: 8px;
 }
+
+.mb .MuiBox-root #b1{
+  flex-grow: 1;
+}
+
+.mb .MuiBox-root #b2{
+  display: flex;
+}
+
 /* Box{
   flex-grow: 1;
 } */
