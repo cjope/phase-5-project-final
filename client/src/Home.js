@@ -1,7 +1,6 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Accordion, Paper, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
-import { useState } from "react";
-import Items from "./Items";
+import { useState } from "react"
 
 function Home({categories}) {
   const [expanded, setExpanded] = useState(false)

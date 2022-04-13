@@ -43,14 +43,19 @@ function Usda(){
           <h2 className="us1">{food.description}</h2>
           <div>
             <p><strong>Category</strong>: {food.foodCategory}</p>
-            <Button key={food.fdcId} size="small" variant="outlined" onClick={handleClickToOpen} color="primary" autoFocus>
+            <Button size="small" variant="outlined" onClick={handleClickToOpen} color="primary" autoFocus>
                 Nutritional Facts
             </Button>
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Nutritional Facts"}</DialogTitle>
                 <DialogContent>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <p>-{food.foodNutrients[0].derivationDescription}</p>
+                        <small><strong>Serving Size (house): </strong>{food.householdServingFullText}</small>
+                        <small><strong>Serving Size (indv): </strong>{food.servingSize} {food.servingSizeUnit}</small>
+                    </div>
                     {food.foodNutrients.map(nut=>(
-                        <div key={nut.nutrientId}>
+                        <div key={nut.nutrientId} style={{display:"flex",flexDirection:"column"}}>
                             <p><strong>{nut.nutrientName}</strong>: {nut.nutrientNumber} {nut.unitName}</p>
                         </div>
                     ))}
@@ -69,10 +74,10 @@ function Usda(){
 
     return(
         <div className="us2">
-            <Card variant="outlined" sx={{m:5, fontSize:50, textAlign:"center"}}>USDA SEARCH</Card>
-            <TextField id="outlined-search" variant="outlined" sx={{m:2}} label="Search field" type="search" autoSave='false' onChange={handleSearchInput}/>
-            <Button variant="outlined" size="large" sx={{p:2, m:2}} onClick={handleUsdaSearch} disabled={disable}>Search</Button>
-            <Box sx={{m:2 }}>
+            <Card id="header" variant="outlined">USDA SEARCH</Card>
+            <TextField id="outlined-search" variant="outlined" label="Search field" type="search" autoSave='false' onChange={handleSearchInput}/>
+            <Button variant="outlined" size="large" onClick={handleUsdaSearch} disabled={disable}>Search</Button>
+            <Box>
                 <Grid
                     container 
                     direction="row"

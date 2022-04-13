@@ -29,11 +29,10 @@ function Logout({ setUser, user }) {
           <Dialog open={open} onClose={handleToClose} onSubmit={handleLogout}>
           <DialogTitle>{"Are you sure?"}</DialogTitle>
           <DialogActions>
-            <Button onClick={handleToClose} color="primary" autoFocus>No</Button>
+            <Button onClick={handleToClose} color="primary">No</Button>
             <Button
               onClick={handleLogout}
               color="primary"
-              autoFocus
               primary="true"
             >Yes
             </Button>

@@ -1,6 +1,6 @@
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { Button, Card, IconButton, Paper, Stack } from '@mui/material';
+import { Button, Card, IconButton, Paper } from '@mui/material';
 import { CalendarPicker } from '@mui/lab';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ function ItemDetail({item, user}) {
 
     useEffect(() => {
         if(!item.id){
-        navigate("/items")
+        navigate("/")
         }
     },[item, navigate])
 
@@ -81,7 +81,7 @@ function ItemDetail({item, user}) {
     return (
         <div className='id1' >
             <div className="id-header" >
-                <IconButton onClick={e=>navigate("/items")} ><ArrowBackIcon color="primary"/>Items</IconButton>
+                <IconButton onClick={e=>navigate("/")} ><ArrowBackIcon color="primary"/>Items</IconButton>
                 <div className='id-sum'>
                     <Paper elevation={20}>Will expire {difference} days from today</Paper>
                 </div>

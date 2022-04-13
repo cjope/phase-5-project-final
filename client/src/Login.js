@@ -26,7 +26,15 @@ function Login({ setUser }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user))
-        handleToClose();
+        toast.success(`welcome ${username}`, {
+          autoClose: 1500,
+          hideProgressBar: true,
+          transition: Flip,
+          closeButton:false,
+          icon:false,
+          position: "top-center"
+        })
+        handleToClose()
       } else {
         return r.json().then((user) =>
           toast.error(user.errors, {

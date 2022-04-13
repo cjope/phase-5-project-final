@@ -70,7 +70,7 @@ const renderMenu = (
       <div className='mb2'>
         <Link href="/julian" underline="none"><Button variant="outlined">Julian Calc</Button></Link>
         <Link href="/usda" underline="none"><Button variant="outlined">USDA</Button></Link>
-        <Link href="/items" underline="none"><Button variant="outlined">Items</Button></Link>
+        <Link href="/" underline="none"><Button variant="outlined">Items</Button></Link>
         {user?.is_admin === true ? <Link href="/create-item" underline="none"><Button variant="outlined">Create Item</Button></Link>:<></>}
       </div>
     </div>
@@ -111,7 +111,7 @@ const renderMenu = (
               <Box id="b2">
                 <TextField id="outlined-search" variant="outlined" label="Search field" type="search" autoSave='false' onChange={handleSearch}/>
                 <div>
-                  <IconButton title={`Logged in as ${user?.username}`} size="large" edge="end" color={user.is_admin? "warning":"inherit"} onClick={e=>handleMenuOpen(e)}>
+                  <IconButton title={`Logged in as ${user?.username}`} size="large" edge="end" color={user?.is_admin? "warning":"inherit"} onClick={e=>handleMenuOpen(e)}>
                     <AccountCircle/>
                   </IconButton>
                 </div>

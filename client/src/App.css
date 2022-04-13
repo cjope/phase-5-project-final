@@ -1,202 +1,114 @@
-.App {
-  display: block;
-  text-align: center;
-}
-
 body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   background-color: rgb(104, 250, 160);
   margin-top: 100px;
+  margin-inline: 12%;
+  align-content: center;
+  border: solid black
 }
 
-.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-  text-align: center;
-}
-
-
-
+/* aligns all forms */
 Form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-/* category name */
-.emoji-picker-react .emoji-group:before {
-  margin-bottom: 2% !important;
-}
+/* CreateItem */
 
-.emoji :hover {
-  transform: scale(1.2) !important;
-  z-index: 2 !important;
-  position: relative !important;
-  background-color: unset !important;
-}
+  /* CreateItem: Emoji */
+    /* remove default green highlight, enlarge, show above category when scrolling */
+    .emoji :hover {
+      transform: scale(1.2) !important;
+      z-index: 2 !important;
+      position: relative !important;
+      background-color: unset !important;
+    }
+    /* emoji container full size */
+    aside.emoji-picker-react {
+      width: auto !important;
+      flex-wrap: wrap;
+    }
+    /* remove active category underline */
+    .active-category-indicator {
+      opacity: 0 !important;
+    }
+    /* larger emoji icons */
+    .emoji-picker-react img.emoji-img {
+      height: 50px !important;
+      width: 50px !important;
+    }
+    /* larger category icons, highest index  */
+    .emoji-categories button {
+      height: 25px !important;
+      width: 25px !important;
+      background-size: unset !important;
+      z-index: 3 !important;
+      margin: 15px !important;
+    }
+    /* selected category stays large and has glow */
+    .emoji-picker-react .emoji-categories button.active {
+      transform: scale(1.25);
+      padding: 0 !important;
+      border-radius: 50px;
+      box-shadow: 0em 0em 1em rgb(4, 255, 58);
+    }
+    /* category emphasis when hovering */
+    .emoji-categories :hover {
+      transform: scale(1.2);
+      opacity: 1 !important;
+    }
+    /* removes scrollbar */
+    aside.emoji-picker-react ::-webkit-scrollbar {
+      display: none !important;
+    }
 
-/* emoji container full size */
-aside.emoji-picker-react {
-  width: auto !important;
-  flex-wrap: wrap;
-}
+  /* CreateItem: Perishable */
+    /* match height of switch icon */
+    .MuiSwitch-root{
+      width: 50px;
+      height: 42px !important;
+      justify-content: center;
+    }
+    /* lighten switch track */
+    .MuiSwitch-track{
+      opacity: .1 !important;
+    }
 
-/* active category underline */
-.active-category-indicator {
-  opacity: 0 !important;
-}
-
-.emoji-picker-react img.emoji-img {
-  height: 50px !important;
-  width: 50px !important;
-}
-
-.emoji-categories button {
-  height: 25px !important;
-  width: 25px !important;
-  background-size: unset !important;
-  z-index: 3 !important;
-  margin: 15px !important;
-}
-
-.emoji-picker-react .emoji-categories button.active {
-  transform: scale(1.25);
-  padding: 0 !important;
-  border-radius: 50px;
-  box-shadow: 0em 0em 1em rgb(4, 255, 58);
-}
-
-.emoji-categories :hover {
-  transform: scale(1.2);
-  opacity: 1 !important;
-}
-
-/* removes scrollbar */
-aside.emoji-picker-react ::-webkit-scrollbar {
-  display: none !important;
-}
-
-.MuiSwitch-root{
-  width: 50px;
-  height: 42px !important;
-  justify-content: center;
-}
-
-.MuiSwitch-track{
-  opacity: .1 !important;
-}
-
-
-
-
-.menu {
-  display: flex;
-  justify-content: space-around;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  padding-inline: 2%;
-}
-
-.user {
-  display: flex;
-  flex-direction: column;
-  margin: 10%;
-  align-items: center;
-}
-
-.nav p {
-  width: 200px;
-  margin-right: 5%;
-}
-
-.nav img {
-  width: 50px;
-  height: auto;
-  padding-left: 50px;
-}
-
-
-
-
-/* App */
-.f-list{
-  text-align: right;
-}
-
-.f-list Button{
-  min-width:200px;
-  margin: 5px;
-}
+  /* App */
+    /* App: Item Filter */
+    .i-filter{
+      text-align: right;
+    }
+    .i-filter Button{
+      min-width:200px;
+      margin: 5px;
+    }
 
 /* CreateItem */
 
 .ci{
   display: flex;
   justify-content: center;
+  
 }
-.ci Form{
-  width: 600px;
-}
-
 .ci .MuiFormControl-root{
   margin:2px;
 }
-
 .ci .MuiFormGroup-root{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin:2px;
 }
-
-
 .ci img{
   margin:auto;
 }
  .ci .MuiTypography-root{
   margin:auto;
 }
-
-
 
 /* EditUser */
 .eu{
@@ -207,17 +119,8 @@ aside.emoji-picker-react ::-webkit-scrollbar {
 }
 
 /* Home */
-
-mui.home Accordion{
-  color: blue;
-}
-
 .home .MuiTypography-root{
   font-weight: bold;
-}
-
-.home Typography{
-  color:blue !important;
 }
 
 /* ItemDetail */
@@ -225,7 +128,6 @@ mui.home Accordion{
   display:flex;
   flex-direction: column;
 }
-
 .id2{
   text-align: center;
   display: flex;
@@ -240,20 +142,16 @@ mui.home Accordion{
   margin-top: 20px;
   margin-right: 25px;
 }
-
 .id4{
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   margin-top: 20px;
 }
-
 .id5{
   display: flex;
   justify-content: center;
 }
-
-
 .id-sum .MuiPaper-root{
   padding:2px;
   width:450px;
@@ -264,14 +162,12 @@ mui.home Accordion{
   padding-top:20px;
   margin-inline: 20px;
 }
-
 .id-name .MuiPaper-root{
   width:364px;
   padding-bottom:50px;
   padding-top:50px;
   font-size:25px;
 }
-
 .id-info{
   width: 364px;
   display: flex;
@@ -279,7 +175,6 @@ mui.home Accordion{
   justify-content: space-between;
   padding-inline:10px;
 }
-
 .id-info .MuiPaper-root{
   font-size: 20px;
   margin-block: 15px;
@@ -290,45 +185,10 @@ mui.home Accordion{
   justify-content: center;
   border-radius: 20px;
 }
-
-
-
-
-
-
-/* 
-
-
-.id2 .MuiPaper-root{
-  padding: 2px;
-  width: 300px;
-  margin:2px;
-  font-size: 25px;
+.id-header{
+  display: flex;
+  justify-content: center;
 }
-
-.id-name .MuiPaper-root{
-  padding: 2px;
-  width: 340px;
-  padding-bottom: 6px;
-  padding-top: 6px;
-}
-
-/* Paper{
-  border-radius:5
- } */
-
- /* Paper{
-   padding: 2;
-   width: 300;
-   margin: 2;
-   font-size: 25;
- } */
-
-
- .id-header{
-   display: flex;
-   justify-content: center;
- }
 
  /* Items */
  .i1 .MuiPaper-root{
@@ -336,7 +196,6 @@ mui.home Accordion{
    width: 600px;
    font-size: 25px;
  }
-
  .i1{
    display: flex;
    flex-direction: column;
@@ -345,15 +204,6 @@ mui.home Accordion{
    text-align: center;
  }
 
- /* Login */
- /* FormControl{
-   margin: 2;
- } */
- /* DialogActions{
-   display: flex;
-   justify-content: space-around;
- } */
- 
  /* MenuBar */
  .mb1{
    text-align: center;
@@ -361,8 +211,6 @@ mui.home Accordion{
    margin-bottom: 20px;
    margin-top: 0;
  }
-
-
  .mb2{
    display: flex;
    flex-direction: row;
@@ -373,81 +221,37 @@ mui.home Accordion{
 .mb3{
   margin-inline-end: 8px;
 }
-
 .mb .MuiBox-root #b1{
   flex-grow: 1;
 }
-
 .mb .MuiBox-root #b2{
   display: flex;
 }
-
-/* Box{
-  flex-grow: 1;
-} */
-/* IconButton{
-  margin-right: 2;
-} */
-/* MenuIcon{
-  flex-grow: 1;
-} */
 .mb4{
   width: 195px;
 }
-/* Box{
-  display: {xs: flex, md: flex};
-} */
 .mb5{
   width: 40px;
 }
-/* Box{
-  display: {xs: flex, md: none};
-} */
-
-/* SignUp */
-.su1{
-  display: flex;
-  flex-direction: column;
-  align-items: center;  
-}
-/* FormControl{
-  margin: 2;
-} */
-.su2{
-  display: flex;
-  justify-content: space-around;
-}
-/* Button{
-  margin: 2;
-} */
-
-/* SignupForm */
-
 
 /* USDA */
 
-.us1{
-  text-align: center;
-}
-/* DialogActions{
-  justify-content: center;
-} */
 .us2{
   display: flex;
   flex-direction: column;
 }
-/* Card{
-  margin: 5;
-  font-size: 50;
+.us2 #header{
+  margin: 2%;
+  font-size: 50px;
   text-align: center;
-} */
-/* TextField{
-  margin:2;
-} */
-/* Button{
-  padding:2;
-  margin:2;
-} */
-/* Box{
-  margin: 2;
-} */
+}
+.us2 .MuiTextField-root{
+  margin:2%;
+}
+.us2 Button{
+  padding:2%;
+  margin:2%;
+}
+.us2 .MuiBox-root{
+  margin: 2%;
+}

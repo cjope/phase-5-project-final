@@ -1,4 +1,4 @@
-import { ListItem, Grid, Stack, Paper, Card, Typography, Button, IconButton, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { ListItem, Grid, Stack, Paper, Typography, Button, IconButton, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
