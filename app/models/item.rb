@@ -25,4 +25,8 @@ class Item < ApplicationRecord
         t == 1 ? "Dry" : t == 2 ? "Fridge" : "Freezer"
     end
 
+    def alt_id
+        @current_user
+    end
+
 end

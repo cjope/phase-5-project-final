@@ -1,257 +1,86 @@
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background-color: rgb(104, 250, 160);
-  margin-top: 100px;
-  margin-inline: 12%;
-  align-content: center;
-  border: solid black
-}
+body {display: flex; flex-direction: column; justify-content: space-evenly; background-color: rgb(104, 250, 160); margin-top: 100px; margin-inline: 12%; align-content: center;}
 
 /* aligns all forms */
-Form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
+Form {display: flex; flex-direction: column; justify-content: space-evenly;}
+
 
 /* CreateItem */
+  /* emoji */
+  /* remove default green highlight, enlarge, show above category when scrolling */
+  .emoji :hover {
+  transform: scale(1.2) !important; z-index: 2 !important; position: relative !important; background-color: unset !important;}
+  /* emoji container full size */
+  aside.emoji-picker-react {width: auto !important; flex-wrap: wrap;}
+  /* remove active category underline */
+  .active-category-indicator {opacity: 0 !important;}
+  /* larger emoji icons */
+  .emoji-picker-react img.emoji-img {height: 50px !important; width: 50px !important;}
+  /* larger category icons, highest index */
+  .emoji-categories button {height: 25px !important; width: 25px !important; background-size: unset !important; z-index: 3 !important; margin: 15px !important;}
+  /* selected category stays large and has glow */
+  .emoji-picker-react .emoji-categories button.active {transform: scale(1.25); padding: 0 !important; border-radius: 50px; box-shadow: 0em 0em 1em rgb(4, 255, 58);}
+  /* category emphasis when hovering */
+  .emoji-categories :hover {transform: scale(1.2); opacity: 1 !important;}
+  /* removes scrollbar */
+  aside.emoji-picker-react ::-webkit-scrollbar {display: none !important;}
+ /* perishable */
+  /* match height of switch icon */
+  .MuiSwitch-root{width: 50px; height: 42px !important; justify-content: center;}
+  /* lighten switch track */
+  .MuiSwitch-track{opacity: .1 !important;}
 
-  /* CreateItem: Emoji */
-    /* remove default green highlight, enlarge, show above category when scrolling */
-    .emoji :hover {
-      transform: scale(1.2) !important;
-      z-index: 2 !important;
-      position: relative !important;
-      background-color: unset !important;
-    }
-    /* emoji container full size */
-    aside.emoji-picker-react {
-      width: auto !important;
-      flex-wrap: wrap;
-    }
-    /* remove active category underline */
-    .active-category-indicator {
-      opacity: 0 !important;
-    }
-    /* larger emoji icons */
-    .emoji-picker-react img.emoji-img {
-      height: 50px !important;
-      width: 50px !important;
-    }
-    /* larger category icons, highest index  */
-    .emoji-categories button {
-      height: 25px !important;
-      width: 25px !important;
-      background-size: unset !important;
-      z-index: 3 !important;
-      margin: 15px !important;
-    }
-    /* selected category stays large and has glow */
-    .emoji-picker-react .emoji-categories button.active {
-      transform: scale(1.25);
-      padding: 0 !important;
-      border-radius: 50px;
-      box-shadow: 0em 0em 1em rgb(4, 255, 58);
-    }
-    /* category emphasis when hovering */
-    .emoji-categories :hover {
-      transform: scale(1.2);
-      opacity: 1 !important;
-    }
-    /* removes scrollbar */
-    aside.emoji-picker-react ::-webkit-scrollbar {
-      display: none !important;
-    }
-
-  /* CreateItem: Perishable */
-    /* match height of switch icon */
-    .MuiSwitch-root{
-      width: 50px;
-      height: 42px !important;
-      justify-content: center;
-    }
-    /* lighten switch track */
-    .MuiSwitch-track{
-      opacity: .1 !important;
-    }
-
-  /* App */
-    /* App: Item Filter */
-    .i-filter{
-      text-align: right;
-    }
-    .i-filter Button{
-      min-width:200px;
-      margin: 5px;
-    }
+/* App */
+ /* item filter */
+  .i-filter{text-align: right;}
+  .i-filter Button{min-width: 200px; margin: 5px;}
 
 /* CreateItem */
-
-.ci{
-  display: flex;
-  justify-content: center;
-  
-}
-.ci .MuiFormControl-root{
-  margin:2px;
-}
-.ci .MuiFormGroup-root{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin:2px;
-}
-.ci img{
-  margin:auto;
-}
- .ci .MuiTypography-root{
-  margin:auto;
-}
+  .ci{display: flex; justify-content: center;}
+  .ci .MuiFormControl-root{margin: 2px;}
+  .ci .MuiFormGroup-root{display: flex; flex-direction: row; justify-content: space-between; margin: 2px;}
+  .ci img{margin: auto;}
+  .ci .MuiTypography-root{margin: auto;}
 
 /* EditUser */
-.eu{
-  margin-inline: 5;
-}
-.eu Button{
-  background-color: white;
-}
+  .eu{margin-inline: 5;}
+  .eu Button{background-color: white;}
 
 /* Home */
-.home .MuiTypography-root{
-  font-weight: bold;
-}
+  .home .MuiTypography-root{font-weight: bold;}
 
 /* ItemDetail */
-.id1{
-  display:flex;
-  flex-direction: column;
-}
-.id2{
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-}
-.id3{
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  margin-top: 20px;
-  margin-right: 25px;
-}
-.id4{
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  margin-top: 20px;
-}
-.id5{
-  display: flex;
-  justify-content: center;
-}
-.id-sum .MuiPaper-root{
-  padding:2px;
-  width:450px;
-  margin:auto;
-  text-align:center;
-  font-size:25px;
-  padding-bottom:20px;
-  padding-top:20px;
-  margin-inline: 20px;
-}
-.id-name .MuiPaper-root{
-  width:364px;
-  padding-bottom:50px;
-  padding-top:50px;
-  font-size:25px;
-}
-.id-info{
-  width: 364px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-inline:10px;
-}
-.id-info .MuiPaper-root{
-  font-size: 20px;
-  margin-block: 15px;
-  padding: 10px;
-  min-height: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 20px;
-}
-.id-header{
-  display: flex;
-  justify-content: center;
-}
+  .id1{display: flex; flex-direction: column;}
+  .id2{text-align: center; display: flex; flex-direction: row; justify-content: center; align-items: stretch;}
+  .id3{display: flex; justify-content: space-around; flex-direction: row; margin-top: 20px; margin-right: 25px;}
+  .id4{display: flex; justify-content: space-around; flex-direction: row; margin-top: 20px;}
+  .id5{display: flex; justify-content: center;}
+  .id-sum .MuiPaper-root{padding: 2px; margin: auto; text-align: center; font-size: 25px; padding-bottom: 20px; padding-top: 20px; margin-inline: 20px;}
+  .id-name .MuiPaper-root{padding-bottom: 50px; padding-top: 50px; font-size: 25px;}
+  .id-info{display: flex; flex-direction: column; justify-content: space-between; padding-inline: 10px;}
+  .id-info .MuiPaper-root{font-size: 20px; margin-block: 15px; padding: 10px; min-height: 50px; display: flex; flex-direction: column; justify-content: center; border-radius: 20px;}
+  .id-header{display: flex; justify-content: center;}
 
- /* Items */
- .i1 .MuiPaper-root{
-   padding: 2px;
-   width: 600px;
-   font-size: 25px;
- }
- .i1{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
- }
+/* Items */
+  .i1{display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;}
+  .i1 .MuiPaper-root{padding: 2px; width: 100%; font-size: 25px; margin-block-end: 2%;}
+  .i1 li .MuiButton-root {flex: 2;}
+  .i1 li .MuiIconButton-root {margin-block-end: 2%;}
+  .i1 li .Accordion-root {margin-block-end: 2%;}
 
- /* MenuBar */
- .mb1{
-   text-align: center;
-   height: 2px;
-   margin-bottom: 20px;
-   margin-top: 0;
- }
- .mb2{
-   display: flex;
-   flex-direction: row;
- }
- .mb2 Button{
-   margin-inline: 2px;
- }
-.mb3{
-  margin-inline-end: 8px;
-}
-.mb .MuiBox-root #b1{
-  flex-grow: 1;
-}
-.mb .MuiBox-root #b2{
-  display: flex;
-}
-.mb4{
-  width: 195px;
-}
-.mb5{
-  width: 40px;
-}
+/* MenuBar */
+   .mb1{text-align: center; height: 2px; margin-bottom: 20px; margin-top: 0;}
+  .mb2{display: flex; flex-direction: row;}
+  .mb2 Button{margin-inline: 2px;}
+  .mb3{margin-inline-end: 8px;}
+  .mb .MuiBox-root #b1{flex-grow: 1;}
+  .mb .MuiBox-root #b2{display: flex;}
+  .mb4{width: 195px;}
+  .mb5{width: 40px;}
+  .mb .MuiPaper-root{background-color: green;}
 
 /* USDA */
-
-.us2{
-  display: flex;
-  flex-direction: column;
-}
-.us2 #header{
-  margin: 2%;
-  font-size: 50px;
-  text-align: center;
-}
-.us2 .MuiTextField-root{
-  margin:2%;
-}
-.us2 Button{
-  padding:2%;
-  margin:2%;
-}
-.us2 .MuiBox-root{
-  margin: 2%;
-}
+  .us2{display: flex; flex-direction: column;}
+  .us2 #header{margin: 2%; font-size: 50px; text-align: center;}
+  .us2 .MuiTextField-root{margin: 2%;}
+  .us2 Button{padding: 2%; margin: 2%;}
+  .us2 .MuiBox-root{margin: 2%;}

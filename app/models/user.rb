@@ -14,4 +14,8 @@ class User < ApplicationRecord
         self.email = email.downcase unless email.blank?
     end
 
+    def current_user
+        current_user = @current_user
+    end
+
 end
