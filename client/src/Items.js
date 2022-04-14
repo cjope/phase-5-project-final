@@ -54,11 +54,13 @@ function Items({items, setSelectedItem, user, categories, updateLike}) {
                   <Button onClick={e=>handleViewItem(item)}>
                     <Paper elevation={10}>{item.name}</Paper>
                   </Button>
+                  {user?<>
                   {user?.is_admin?<></>:
                     <IconButton id={item.id} value={item.liked} onClick={e=>handleLikeItem(e.currentTarget)}>
                       <FavoriteIcon color={item.liked? "warning" : "none"} ></FavoriteIcon>
                     </IconButton>
-                  }
+                  }</>:<></>
+                }
                 </ListItem>
               </Stack>
             </Grid>
@@ -69,7 +71,9 @@ function Items({items, setSelectedItem, user, categories, updateLike}) {
 
   return (
       <div className='i1'>
-        {listCategories}
+          <div>
+            {listCategories}
+          </div>
     </div>
   )
 }

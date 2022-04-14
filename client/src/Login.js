@@ -85,7 +85,7 @@ function Login({ setUser }) {
         <DialogActions sx={{display:"flex", justifyContent:"space-around"}}>
           <Button
             onClick={handleLogin}
-            variant="outlined"
+            variant="contained"
             color="success"
             primary="true"
             type="submit"
@@ -93,7 +93,7 @@ function Login({ setUser }) {
             OK
           </Button>
 
-        <Button onClick={handleToClose} variant="outlined" color="warning">
+        <Button onClick={handleToClose} variant="contained" color="warning">
           Close
         </Button>
         </DialogActions>

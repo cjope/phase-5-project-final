@@ -37,13 +37,14 @@ function Usda(){
         .then(usda => setUsda(usda))
       }
 
+      console.log(usda)
     const displayUsda = usda?.foods.map(food=>(
-        <Grid key={food.fdcId} item xs={3}>
+        <Grid key={food.id} item xs={3}>
         <Item>
-          <h2 className="us1">{food.description}</h2>
+          <p className="us1">{food.description}</p>
           <div>
             <p><strong>Category</strong>: {food.foodCategory}</p>
-            <Button size="small" variant="outlined" onClick={handleClickToOpen} color="primary" autoFocus>
+            <Button size="small" variant="contained" onClick={handleClickToOpen} color="primary" autoFocus>
                 Nutritional Facts
             </Button>
             <Dialog open={open} onClose={handleToClose}>
@@ -61,7 +62,7 @@ function Usda(){
                     ))}
                 </DialogContent>
                 <DialogActions sx={{justifyContent:"center"}}>
-                    <Button onClick={handleToClose} variant="outlined" color="primary" autoFocus>
+                    <Button onClick={handleToClose} variant="contained" color="success" autoFocus>
                         Close
                     </Button>
                 </DialogActions>

@@ -9,11 +9,9 @@ function Signup({ setUser }) {
   const [username, setUsername] = useState([])
   const [password, setPassword] = useState([])
   const [passwordConfirmation, setPasswordConfirmation] = useState([])
-  const [open, setOpen] = useState(true)
   const navigate = useNavigate()
 
   function handleToClose() {
-    setOpen(false)
     navigate(-1)
   }
 
@@ -48,7 +46,7 @@ function Signup({ setUser }) {
 
   return (
     <div className="su1">
-      <Dialog open={open} onClose={handleToClose} onSubmit={handleSignup}>
+      <Dialog open={true} onClose={handleToClose} onSubmit={handleSignup}>
         <DialogTitle>{"Sign Up"}</DialogTitle>
         <DialogContent>
           <Stack>
@@ -101,14 +99,14 @@ function Signup({ setUser }) {
         <div className="su2">
           <Button
             sx={{m:2}}
-            variant="outlined"
+            variant="contained"
             color="success"
             primary="true"
             onClick={handleSignup}
           >
             OK
           </Button>
-          <Button onClick={handleToClose} variant="outlined" color="warning"  sx={{m:2}}>
+          <Button onClick={handleToClose} variant="contained" color="warning"  sx={{m:2}}>
             Close
           </Button>
         </div>
