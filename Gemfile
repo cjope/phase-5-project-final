@@ -8,7 +8,6 @@ gem 'active_model_serializers'
 gem "pg", "~> 1.1"
 gem "rails", "~> 7.0.2", ">= 7.0.2.2"
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.4"
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -25,6 +24,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "sqlite3", "~> 1.4"
   gem "web-console"
   gem "spring"
 end
