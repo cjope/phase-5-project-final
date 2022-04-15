@@ -62,7 +62,7 @@ Form {display: flex; flex-direction: column; justify-content: space-evenly;}
 
 /* Items */
   .i1{display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;}
-  .i1 .MuiPaper-root{padding: 2px; width: 100%; font-size: 25px; margin-block-end: 2%;}
+  .i1 .MuiPaper-root{padding: 2px; font-size: 25px; margin-block-end: 2%; min-width: 600px}
   .i1 li .MuiButton-root {flex: 2;}
   .i1 li .MuiIconButton-root {margin-block-end: 2%;}
   .i1 li .Accordion-root {margin-block-end: 2%;}
