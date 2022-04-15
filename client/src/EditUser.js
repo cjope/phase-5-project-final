@@ -17,7 +17,7 @@ function EditUser({user}){
   },[user])
 
   const handleToClose = () => {
-    navigate(-1)
+    navigate("/")
   }
 
   function handleUpdateUsername(e){
