@@ -4,16 +4,19 @@ import { useState } from "react"
 import { Flip, toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 
-function Login({ setUser }) {
-  const [open, setOpen] = useState(true)
+function Login({ setUser, updateLikes }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
   const handleToClose = () => {
-    setOpen(false)
     setUser()
-    navigate("/")   
+    setTimeout(handleNav, 1000)
+    updateLikes()
+  }
+
+  function handleNav(){
+    navigate("/")
   }
 
   function handleLogin(e) {
@@ -51,7 +54,7 @@ function Login({ setUser }) {
 
   return (
     <>
-      <Dialog open={open} onClose={handleToClose} onSubmit={handleLogin}>
+      <Dialog open={true} onClose={handleToClose} onSubmit={handleLogin}>
         <DialogTitle>{"Please Log In"}</DialogTitle>
           <DialogContent>
             <Stack>
