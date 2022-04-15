@@ -6,37 +6,27 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";
 
 function Logout({ setUser, user }) {
-  const [open, setOpen] = React.useState(true)
   const navigate = useNavigate()
 
   const handleToClose = () => {
-    setUser()
-    setOpen(false)
     navigate("/")
   }
 
   function handleLogout() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null)
-      }
     })
+    setUser()
     handleToClose()
   }
 
   return (
-    <div>
-          <Dialog open={open} onClose={handleToClose} onSubmit={handleLogout}>
+    <div className="lo">
+          <Dialog open={true} onClose={handleToClose} onSubmit={handleLogout}>
           <DialogTitle>{"Are you sure?"}</DialogTitle>
-          <DialogActions>
-            <Button onClick={handleToClose} color="primary">No</Button>
-            <Button
-              onClick={handleLogout}
-              color="primary"
-              primary="true"
-            >Yes
-            </Button>
-          </DialogActions>
+          <div style={{display:"flex", justifyContent:"space-around", margin:5}}>
+            <Button onClick={handleToClose} variant="contained" color="secondary">No</Button>
+            <Button onClick={handleLogout} variant="contained" color="primary" primary="true">Yes</Button>
+          </div>
         </Dialog>
     </div>
   )

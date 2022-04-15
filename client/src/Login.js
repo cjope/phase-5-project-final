@@ -12,6 +12,7 @@ function Login({ setUser }) {
 
   const handleToClose = () => {
     setOpen(false)
+    setUser()
     navigate("/")   
   }
 

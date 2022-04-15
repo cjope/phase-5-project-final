@@ -1,4 +1,4 @@
-import { FormControl, TextField, Button } from "@mui/material"
+import { FormControl, TextField, Button, Tooltip } from "@mui/material"
 import { useState } from "react"
 
 function JulianCalendar(){
@@ -23,16 +23,23 @@ function JulianCalendar(){
                     onChange={e=>setJulianDay(e.target.value)}
                     >
                 </TextField>
+                <Tooltip title={julianDay.length === 5 ? "" : "Date needs to be 5 digits"}>
+                <span style={{width:"100%"}}>
                 <Button
                     variant="contained"
                     color="success"
                     onClick={handleJulianDate}
+                    disabled={julianDay.length !== 5}
+                    sx={{width:"100%"}}
+                    
                 >
                     Submit
                 </Button>
+                </span>
+                </Tooltip>
             </FormControl>
             <div style={{textAlign:"center"}}>
-                <h1>Calendar Date is: {julianDate}</h1>
+                {julianDate?<h1>Calendar Date is: {julianDate}</h1>:<></>}
             </div>
         </div>  
     )

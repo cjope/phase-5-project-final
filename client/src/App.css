@@ -86,3 +86,5 @@ Form {display: flex; flex-direction: column; justify-content: space-evenly;}
   .us2 .MuiBox-root{margin: 2%;}
 
   .su2{display: flex; justify-content: space-around;}
+
+  .lo{display: flex; justify-content: space-around;}
