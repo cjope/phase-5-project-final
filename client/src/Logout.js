@@ -1,8 +1,5 @@
 import React from "react";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
+import { Dialog, DialogTitle, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function Logout({ setUser, user }) {
