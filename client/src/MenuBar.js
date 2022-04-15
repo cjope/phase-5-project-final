@@ -111,7 +111,7 @@ const renderMenu = (
               <Box id="b2">
                 <TextField id="outlined-search" variant="outlined" label="Search field" type="search" autoSave='false' onChange={handleSearch}/>
                 <div>
-                  <IconButton title={`Logged in as ${user?.username}`} size="large" edge="end" color={user?.is_admin? "warning":"inherit"} onClick={e=>handleMenuOpen(e)}>
+                  <IconButton title={user?.id ? `Logged in as ${user?.username}`: "Not logged in"} size="large" edge="end" color={user?.is_admin? "warning":"inherit"} onClick={e=>handleMenuOpen(e)}>
                     <AccountCircle/>
                   </IconButton>
                 </div>
